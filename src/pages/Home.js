@@ -1,9 +1,13 @@
+import styles from './Pages.module.css';
 function Home(){
     return(
         <div>
-            <h1>Home</h1>
-            <p>Conteúdo da home</p>
+        <div className={styles.tittle}>
+             <h1>Home</h1>
         </div>
+        
+         <p className={styles.content}>Conteúdo da home</p>
+     </div>
     )
 }
 
