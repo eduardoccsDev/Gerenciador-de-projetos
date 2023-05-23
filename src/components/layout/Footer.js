@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import styles from './Footer.module.css'
 
 function Footer(){
 
     return(
-        <footer>
+        <footer className={styles.footer}>
             <ul className={styles.socialList}>
                 <li><FaFacebook/></li>
                 <li><FaInstagram/></li>
-                <li><FaTwitter/></li>
-                <li><FaYoutube/></li>
+                <li><FaLinkedin/></li>
             </ul>
-            <p>Nosso rodapé</p>            
+            <p className={styles.copyRight}><span>Gerenciador de projetos</span> &copy; 2023</p>            
         </footer>
     )
 
