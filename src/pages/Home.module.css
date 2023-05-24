@@ -1,0 +1,26 @@
+.PageContainerHome{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4em;
+}
+.PageContainerHome h1{
+    font-size: 2.5em;
+    margin-bottom: .5em;
+}
+.PageContainerHome h1 span{
+    color: #fcab54;
+    padding: 0 .2em;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.PageContainerHome p{
+    margin-bottom:1.5em;
+    color:#7b7b7b;
+}
+.PageContainerHome img{
+    width: 350px;
+    margin: 2em 0;
+}

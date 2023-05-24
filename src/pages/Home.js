@@ -1,13 +1,14 @@
-import styles from './Pages.module.css';
+import styles from './Home.module.css';
+import Savings from '../img/gerenciamento-de-projetos.svg'
+import LinkButton from '../components/layout/LinkButton';
 function Home(){
     return(
-        <div>
-        <div className={styles.tittle}>
-             <h1>Home</h1>
-        </div>
-        
-         <p className={styles.content}>Conteúdo da home</p>
-     </div>
+        <section className={styles.PageContainerHome}>            
+            <h1>Bem-vindo ao <span>Gerenciador de projetos</span></h1>
+            <p>Comece a gerenciar os seus projetos agora mesmo!</p>
+            <LinkButton to='/novoprojeto' text="Criar projeto"/>
+            <img src={Savings} alt="Gerenciador de projetos"/>        
+        </section>
     )
 }
 

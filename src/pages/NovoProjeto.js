@@ -1,13 +1,13 @@
-import styles from './Pages.module.css';
+import ProjectForm from "../components/project/ProjectForm"
+import styles from "./NovoProjeto.module.css"
+
 function NovoProjeto(){
     return(
-        <div>
-        <div className={styles.tittle}>
-             <h1>Novo Projeto</h1>
+        <div className={styles.PageContainerNovoProjeto} >
+            <h1>Criar Projeto</h1>
+            <p>Crie seu projeto para depois adicionar os serviços.</p>
+            <ProjectForm/>
         </div>
-        
-         <p className={styles.content}>Conteúdo da página</p>
-     </div>
     )
 }
 
