@@ -1,4 +1,4 @@
-.myInput, .form select, input[type=submit] {
+.myInput, .form select, input[type=submit], .form button {
     width: 100%;
     margin-bottom: 12px;
     height: 38px;
@@ -8,7 +8,7 @@
     border: none;
     box-shadow: 0px 2px 3px 0px #0000001a;
 }
-.form input[type=submit]{
+.form input[type=submit], .form button{
     background-color:#333;
     color:#fff;
     padding: 0.5em 1em;
@@ -17,10 +17,13 @@
     border-radius: 10px;
 }
 
-.form input[type=submit]:hover{
+.form input[type=submit]:hover, .form button:hover{
     background-color:#fcab54;
     box-shadow: 0px 5px 10px 0px #0000001f;   
 
+}
+.form button svg{
+    margin-right: 8px;
 }
 .checkboxContent{
     background-color: #fff;

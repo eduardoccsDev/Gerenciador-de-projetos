@@ -1,5 +1,6 @@
 import styles from "./ProjectForm.module.css"
 import { useState } from 'react'
+import { IoCreate } from 'react-icons/io5';
 function ProjectForm(){
 
     function cadastrarUsuario(e){
@@ -38,10 +39,22 @@ function ProjectForm(){
     return(
         <form className={styles.form} onSubmit={cadastrarUsuario}>
             <div>
-                <input id='nomeProjeto' required onChange={(e) => setNomeProjeto(e.target.value)} className={styles.myInput} type="text" placeholder="Insira o nome do projeto"/>
+                <input id='nomeProjeto'
+                required
+                onChange={(e) => setNomeProjeto(e.target.value)}
+                className={styles.myInput}
+                type="text"
+                placeholder="Insira o nome do projeto"
+                />
             </div>
             <div>
-                <input id="orcamento" required onChange={(e) => setOrcamento(e.target.value)} className={styles.myInput} type="number" min="0" placeholder="Insira o orçamento total"/>
+                <input id="orcamento"
+                required onChange={(e) => setOrcamento(e.target.value)}
+                className={styles.myInput}
+                type="number"
+                min="0"
+                placeholder="Insira o orçamento total"
+                />
             </div>
             <div>
                 <select required onChange={(e) => setCategoria(e.target.value)}>
@@ -60,7 +73,8 @@ function ProjectForm(){
                 ))}
             </div>
             <div>
-                <input type="submit" value="Criar projeto"/>
+                {/* <input type="submit" value="Criar projeto"/> */}
+                <button type="submit"><IoCreate/>Criar projeto</button>
             </div>
         </form>
     )
