@@ -1,14 +1,14 @@
-input, select {
+.myInput, .form select, input[type=submit] {
     width: 100%;
     margin-bottom: 12px;
-    height: 26px;
-    padding: 5px;
+    height: 38px;
+    padding: 2px 8px;
     background-color: #fff;
     border-radius: 5px;
     border: none;
     box-shadow: 0px 2px 3px 0px #0000001a;
 }
-input[type=submit]{
+.form input[type=submit]{
     background-color:#333;
     color:#fff;
     padding: 0.5em 1em;
@@ -17,8 +17,30 @@ input[type=submit]{
     border-radius: 10px;
 }
 
-input[type=submit]:hover{
+.form input[type=submit]:hover{
     background-color:#fcab54;
-    box-shadow: 0px 5px 10px 0px #0000001f;
+    box-shadow: 0px 5px 10px 0px #0000001f;   
 
+}
+.checkboxContent{
+    background-color: #fff;
+    margin-bottom: 12px;
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: 0px 2px 3px 0px #0000001a;
+    max-height: 136px;
+    overflow-y: scroll;
+}
+.meuSpan{
+    margin-left: 10px;
+    font-size: 13px;
+}
+.indicacao{
+    margin-bottom:12px;
+}
+.boxItems{
+    margin-bottom: 5px;
+}
+option{
+    font-family: 'Montserrat', sans-serif;
 }
