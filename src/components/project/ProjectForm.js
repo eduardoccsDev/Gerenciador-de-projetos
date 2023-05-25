@@ -1,24 +1,41 @@
+
 import styles from "./ProjectForm.module.css"
-import { useState } from 'react'
-import { IoCreate } from 'react-icons/io5';
-function ProjectForm(){
+import { useEffect, useState } from 'react'
+import Input from "../form/Input";
+import Select from "../form/Select";
+import CheckBox from "../form/CheckBox";
+import SubmitButton from "../form/SubmitButton";
+
+function ProjectForm({btnText}){
 
     function cadastrarUsuario(e){
         e.preventDefault()
         console.log('Projeto cadastrado')
-        console.log(`Nome do projeto: ${nomeProjeto} | Orçamento: ${orcamento} | Categoria: ${categoria} | Tecnologia: ${checkedItems}`)
+        console.log(`Nome do projeto: ${nomeProjeto} | Orçamento: ${orcamento} | Categoria: ${categoria} | Tecnologia: ${checked}`)
         
     }
 
     const [nomeProjeto, setNomeProjeto] = useState()
     const [orcamento, setOrcamento] = useState()
-    const [categoria, setCategoria] = useState()
-
+    const [categoria, setCategoria] = useState([])
     const [checked, setChecked] = useState([]);
-    const checkList = ["React", "Angular", "PHP", "HTML", "CSS", "Vue.js", "Docker"];
+    const itemList = ["React", "Angular", "PHP", "HTML", "CSS", "Vue.js", "Docker"];
+    const strAscending = itemList.sort();
 
-    const strAscending = checkList.sort();
-
+    useEffect(() => {
+        fetch("http://localhost:5000/categorias", {
+            method: "GET",
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            setCategoria(data)
+        })
+        .catch((err) => console.log(err))
+    }, [])
+    
     // Add/Remove checked item from list
     const handleCheck = (event) => {
         var updatedList = [...checked];
@@ -29,52 +46,49 @@ function ProjectForm(){
         }
         setChecked(updatedList);
     };
+    
     // Generate string of checked items
-    const checkedItems = checked.length
-    ? checked.reduce((total, item) => {
-        return total + ", " + item;
-        })
-    : "";
+    // const checkedItems = checked.length
+    //  ? checked.reduce((total, item) => {
+    //    return total + ", " + item;
+    //    })
+    //  : "";
 
     return(
         <form className={styles.form} onSubmit={cadastrarUsuario}>
-            <div>
-                <input id='nomeProjeto'
-                required
-                onChange={(e) => setNomeProjeto(e.target.value)}
-                className={styles.myInput}
-                type="text"
-                placeholder="Insira o nome do projeto"
-                />
-            </div>
-            <div>
-                <input id="orcamento"
-                required onChange={(e) => setOrcamento(e.target.value)}
-                className={styles.myInput}
-                type="number"
-                min="0"
-                placeholder="Insira o orçamento total"
-                />
-            </div>
-            <div>
-                <select required onChange={(e) => setCategoria(e.target.value)}>
-                    <option disabled selected value=''>Selecione a categoria</option>
-                    <option value='desenvolvimento'>Desenvolvimento</option>
-                    <option value='redes_sociais'>Redes sociais</option>
-                </select>
-            </div>
+            <Input
+            type='text'
+            name='nomeProjeto'            
+            text='Nome do projeto'
+            placeholder='Insira o nome do projeto'
+            onChange={(e) => setNomeProjeto(e.target.value)}
+            required='required'
+            />
+            <Input
+            type='number'
+            name='orcamento'            
+            text='Orçamento do projeto'
+            placeholder='Insira o orçamento total'
+            onChange={(e) => setOrcamento(e.target.value)}
+            required='required'
+            min='0'
+            />
+            <Select
+            name='categoria'
+            onChange={(e) => setCategoria(e.target.value)}
+            text='Categoria do projeto'
+            options={categoria}
+            />
             <p className={styles.indicacao}>Selecione as Tecnologias usadas:</p>
             <div className={styles.checkboxContent}>
                 {strAscending.map((item, index) => (
                     <div key={index} className={styles.boxItems}>
-                        <input value={item} type='checkbox' onChange={handleCheck} />
-                        <span className={styles.meuSpan}>{item}</span>            
+                        <CheckBox item={item} onChange={handleCheck}/>           
                     </div>
                 ))}
             </div>
-            <div>
-                {/* <input type="submit" value="Criar projeto"/> */}
-                <button type="submit"><IoCreate/>Criar projeto</button>
+            <div>                
+                <SubmitButton text={btnText}/>
             </div>
         </form>
     )

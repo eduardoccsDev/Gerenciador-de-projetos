@@ -1,0 +1,33 @@
+{
+    "projetos": [],
+    "categorias": [
+        {
+            "id": 1,
+            "name": "Infra"
+        },
+        {
+            "id": 2,
+            "name": "Desenvolvimento"
+        },
+        {
+            "id": 3,
+            "name": "Design"
+        },
+        {
+            "id": 4,
+            "name": "Planejamento"
+        },
+        {
+            "id": 5,
+            "name": "Redes Sociais"
+        },
+        {
+            "id": 6,
+            "name": "Manutenção"
+        },
+        {
+            "id": 7,
+            "name": "Servidor"
+        }
+    ]
+}

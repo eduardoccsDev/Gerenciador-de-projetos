@@ -6,7 +6,7 @@ function NovoProjeto(){
         <div className={styles.PageContainerNovoProjeto} >
             <h1>Criar Projeto <IoCreateOutline/></h1>
             <p>Crie seu projeto para depois adicionar os serviços.</p>
-            <ProjectForm/>
+            <ProjectForm btnText='Criar Projeto'/>
         </div>
     )
 }
