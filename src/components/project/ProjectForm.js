@@ -11,16 +11,14 @@ function ProjectForm({btnText}){
     function cadastrarUsuario(e){
         e.preventDefault()
         console.log('Projeto cadastrado')
-        console.log(`Nome do projeto: ${nomeProjeto} | Orçamento: ${orcamento} | Categoria: ${categoria} | Tecnologia: ${checked}`)
-        
+        console.log(`Nome do projeto: ${nomeProjeto} | Orçamento: ${orcamento} | Categoria: ${categoria} | Tecnologia: ${checked}`)    
     }
 
     const [nomeProjeto, setNomeProjeto] = useState()
     const [orcamento, setOrcamento] = useState()
     const [categoria, setCategoria] = useState([])
     const [checked, setChecked] = useState([]);
-    const itemList = ["React", "Angular", "PHP", "HTML", "CSS", "Vue.js", "Docker"];
-    const strAscending = itemList.sort();
+    const boxesAsc = checked.sort();
 
     useEffect(() => {
         fetch("http://localhost:5000/categorias", {
@@ -35,6 +33,20 @@ function ProjectForm({btnText}){
         })
         .catch((err) => console.log(err))
     }, [])
+
+    useEffect(() => {
+        fetch("http://localhost:5000/tecnologias", {
+            method: "GET",
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            setChecked(data)
+        })
+        .catch((err) => console.log(err))
+    }, [])
     
     // Add/Remove checked item from list
     const handleCheck = (event) => {
@@ -46,7 +58,7 @@ function ProjectForm({btnText}){
         }
         setChecked(updatedList);
     };
-    
+
     // Generate string of checked items
     // const checkedItems = checked.length
     //  ? checked.reduce((total, item) => {
@@ -79,19 +91,21 @@ function ProjectForm({btnText}){
             text='Categoria do projeto'
             options={categoria}
             />
-            <p className={styles.indicacao}>Selecione as Tecnologias usadas:</p>
-            <div className={styles.checkboxContent}>
-                {strAscending.map((item, index) => (
-                    <div key={index} className={styles.boxItems}>
-                        <CheckBox item={item} onChange={handleCheck}/>           
-                    </div>
-                ))}
+            <h3 className={styles.indicacao}>Selecione as Tecnologias usadas:</h3>
+            <div className={styles.checkboxContent}>   
+                <CheckBox 
+                boxes={boxesAsc} 
+                cssClass={styles.bosItems} 
+                onChange={handleCheck}
+                />           
             </div>
             <div>                
-                <SubmitButton text={btnText}/>
+                <SubmitButton 
+                text={btnText}
+                />
             </div>
         </form>
     )
 }
 
-export default ProjectForm
+export default ProjectForm 

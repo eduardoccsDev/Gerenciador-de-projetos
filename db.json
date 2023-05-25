@@ -29,5 +29,39 @@
             "id": 7,
             "name": "Servidor"
         }
+    ],
+    "tecnologias": [
+        {
+            "id": 1,
+            "name": "Angular"
+        },
+        {
+            "id": 2,
+            "name": "React"
+        },
+        {
+            "id": 3,
+            "name": "Vuejs"
+        },
+        {
+            "id": 4,
+            "name": "Docker"
+        },
+        {
+            "id": 5,
+            "name": "PHP"
+        },
+        {
+            "id": 6,
+            "name": "JavaScript"
+        },
+        {
+            "id": 7,
+            "name": "HTML"
+        },
+        {
+            "id": 8,
+            "name": "CSS"
+        }
     ]
 }
