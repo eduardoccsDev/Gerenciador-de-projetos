@@ -3,15 +3,14 @@ function CheckBox({handleOnChange, cssClass, boxes }){
 
    return(
         <>
-        {boxes.map((box) => (
-            <div key={box.id} className={cssClass}>         
+        {boxes.map((boxes) => (
+            <div className={cssClass}>         
                     <input 
-                    value={box.name}
-                    id={box.id} 
-                    key={box.id} 
-                    type='checkbox' 
+                    value={boxes.nameTec} 
+                    type='checkbox'
+                    key={boxes.id} 
                     onChange={handleOnChange} />
-                    <label className={styles.nameTec} htmlFor={box.id}>{box.name}</label>            
+                    <label className={styles.nameTec}>{boxes.name}</label>            
             </div>
                 ))}
         </>

@@ -3,11 +3,11 @@ import styles from "./ProjectForm.module.css"
 import { useEffect, useState } from 'react'
 import Input from "../form/Input";
 import Select from "../form/Select";
-import CheckBox from "../form/CheckBox";
 import SubmitButton from "../form/SubmitButton";
 
-function ProjectForm({btnText}){
+function ProjectForm({handleSubmit,btnText, projetosData}){
 
+    const [projeto, setProjeto] = useState(projetosData || {})
     const [nomeProjeto, setNomeProjeto] = useState()
     const [orcamento, setOrcamento] = useState()
     const [categoria, setCategoria] = useState([])
@@ -40,7 +40,25 @@ function ProjectForm({btnText}){
         })
         .catch((err) => console.log(err))
     }, [])
+
+    const submit = (e) => {
+        e.preventDefault()
+        //console.log(projeto)
+        handleSubmit(projeto)
+    }
+
+    function handleChange(e){
+        setProjeto({...projeto, [e.target.name]: e.target.value })
+    }
     
+    function handleCategory(e){
+        setProjeto({...projeto, category: {
+            id: e.target.value,
+            name: e.target.options[e.target.selectedIndex].text,
+        },
+    })
+    }
+
     // Add/Remove checked item from list
     const handleCheck = (event) => {
         var updatedList = [...checked];
@@ -60,38 +78,42 @@ function ProjectForm({btnText}){
     //  : "";
 
     return(
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={submit}>
             <Input
             type='text'
             name='nomeProjeto'            
             text='Nome do projeto'
             placeholder='Insira o nome do projeto'
-            handleOnChange={(e) => setNomeProjeto(e.target.value)}
+            handleOnChange={handleChange}
             required='required'
+            value={projeto.name}
             />
             <Input
             type='number'
             name='orcamento'            
             text='Orçamento do projeto'
             placeholder='Insira o orçamento total'
-            handleOnChange={(e) => setOrcamento(e.target.value)}
+            handleOnChange={handleChange}
             required='required'
             min='0'
+            value={projeto.orcamento}
             />
             <Select
             name='categoria'
-            handleOnChange={(e) => setCategoria(e.target.value)}
+            handleOnChange={handleCategory}
             text='Categoria do projeto'
             options={categoria}
+            value={projeto.category ? projeto.category.id : ''}
             />
             <h3 className={styles.indicacao}>Selecione as Tecnologias usadas:</h3>
-            <div className={styles.checkboxContent}>   
-                {/* <CheckBox 
-                boxes={boxesAsc} 
-                cssClass={styles.bosItems} 
-                handleOnChange={handleCheck}
-                /> */}
-            </div>         
+            <div className={styles.checkboxContent}>       
+                {/* {checked.map((box) => (
+                    <div key={box.id}>
+                    <input value={box.name} type="checkbox" onChange={handleCheck} />
+                    <span>{box.name}</span>
+                    </div>
+                ))} */}
+            </div>
             <div>                
                 <SubmitButton 
                 text={btnText}

@@ -1,67 +1,90 @@
 {
-    "projetos": [],
-    "categorias": [
-        {
-            "id": 1,
-            "name": "Infra"
-        },
-        {
-            "id": 2,
-            "name": "Desenvolvimento"
-        },
-        {
-            "id": 3,
-            "name": "Design"
-        },
-        {
-            "id": 4,
-            "name": "Planejamento"
-        },
-        {
-            "id": 5,
-            "name": "Redes Sociais"
-        },
-        {
-            "id": 6,
-            "name": "Manutenção"
-        },
-        {
-            "id": 7,
-            "name": "Servidor"
-        }
-    ],
-    "tecnologias": [
-        {
-            "id": 1,
-            "name": "Angular"
-        },
-        {
-            "id": 2,
-            "name": "React"
-        },
-        {
-            "id": 3,
-            "name": "Vuejs"
-        },
-        {
-            "id": 4,
-            "name": "Docker"
-        },
-        {
-            "id": 5,
-            "name": "PHP"
-        },
-        {
-            "id": 6,
-            "name": "JavaScript"
-        },
-        {
-            "id": 7,
-            "name": "HTML"
-        },
-        {
-            "id": 8,
-            "name": "CSS"
-        }
-    ]
+  "projetos": [
+    {
+      "nomeProjeto": "Projeto de teste",
+      "orcamento": "5000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 1
+    },
+    {
+      "nomeProjeto": "Projeto de teste",
+      "orcamento": "5000",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 2
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "name": "Infra"
+    },
+    {
+      "id": 2,
+      "name": "Desenvolvimento"
+    },
+    {
+      "id": 3,
+      "name": "Design"
+    },
+    {
+      "id": 4,
+      "name": "Planejamento"
+    },
+    {
+      "id": 5,
+      "name": "Redes Sociais"
+    },
+    {
+      "id": 6,
+      "name": "Manutenção"
+    },
+    {
+      "id": 7,
+      "name": "Servidor"
+    }
+  ],
+  "tecnologias": [
+    {
+      "id": 8,
+      "name": "Angular"
+    },
+    {
+      "id": 9,
+      "name": "React"
+    },
+    {
+      "id": 10,
+      "name": "Vuejs"
+    },
+    {
+      "id": 11,
+      "name": "Docker"
+    },
+    {
+      "id": 12,
+      "name": "PHP"
+    },
+    {
+      "id": 13,
+      "name": "JavaScript"
+    },
+    {
+      "id": 14,
+      "name": "HTML"
+    },
+    {
+      "id": 15,
+      "name": "CSS"
+    }
+  ]
 }
