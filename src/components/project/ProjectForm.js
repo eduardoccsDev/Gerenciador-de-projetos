@@ -8,10 +8,9 @@ import SubmitButton from "../form/SubmitButton";
 function ProjectForm({handleSubmit,btnText, projetosData}){
 
     const [projeto, setProjeto] = useState(projetosData || {})
-    const [nomeProjeto, setNomeProjeto] = useState()
-    const [orcamento, setOrcamento] = useState()
+    // const [nomeProjeto, setNomeProjeto] = useState()
+    // const [orcamento, setOrcamento] = useState()
     const [categoria, setCategoria] = useState([])
-    const [checked, setChecked] = useState([]);
 
     useEffect(() => {
         fetch("http://localhost:5000/categorias", {
@@ -25,21 +24,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
             setCategoria(data)
         })
         .catch((err) => console.log(err))
-    }, [])
-
-    useEffect(() => {
-        fetch("http://localhost:5000/tecnologias", {
-            method: "GET",
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setChecked(data)
-        })
-        .catch((err) => console.log(err))
-    }, [])
+    }, []);
 
     const submit = (e) => {
         e.preventDefault()
@@ -49,6 +34,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
 
     function handleChange(e){
         setProjeto({...projeto, [e.target.name]: e.target.value })
+        console.log(projeto)
     }
     
     function handleCategory(e){
@@ -58,25 +44,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
         },
     })
     }
-
-    // Add/Remove checked item from list
-    const handleCheck = (event) => {
-        var updatedList = [...checked];
-        if (event.target.checked) {
-        updatedList = [...checked, event.target.value];
-        } else {
-        updatedList.splice(checked.indexOf(event.target.value), 1);
-        }
-        setChecked(updatedList);
-    };
-
-    // // Generate string of checked items
-    // const checkedItems = checked.length
-    //  ? checked.reduce((total, item) => {
-    //    return total + ", " + item;
-    //    })
-    //  : "";
-
+  
     return(
         <form className={styles.form} onSubmit={submit}>
             <Input
@@ -104,16 +72,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
             text='Categoria do projeto'
             options={categoria}
             value={projeto.category ? projeto.category.id : ''}
-            />
-            <h3 className={styles.indicacao}>Selecione as Tecnologias usadas:</h3>
-            <div className={styles.checkboxContent}>       
-                {/* {checked.map((box) => (
-                    <div key={box.id}>
-                    <input value={box.name} type="checkbox" onChange={handleCheck} />
-                    <span>{box.name}</span>
-                    </div>
-                ))} */}
-            </div>
+            />            
             <div>                
                 <SubmitButton 
                 text={btnText}

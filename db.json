@@ -21,6 +21,28 @@
       "cost": 0,
       "services": [],
       "id": 2
+    },
+    {
+      "nomeProjeto": "Projeto de teste 02",
+      "orcamento": "5000",
+      "category": {
+        "id": "2",
+        "name": "Desenvolvimento"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
+    },
+    {
+      "nomeProjeto": "Projeto de teste 03",
+      "orcamento": "4000",
+      "category": {
+        "id": "7",
+        "name": "Servidor"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 4
     }
   ],
   "categorias": [
@@ -51,40 +73,6 @@
     {
       "id": 7,
       "name": "Servidor"
-    }
-  ],
-  "tecnologias": [
-    {
-      "id": 8,
-      "name": "Angular"
-    },
-    {
-      "id": 9,
-      "name": "React"
-    },
-    {
-      "id": 10,
-      "name": "Vuejs"
-    },
-    {
-      "id": 11,
-      "name": "Docker"
-    },
-    {
-      "id": 12,
-      "name": "PHP"
-    },
-    {
-      "id": 13,
-      "name": "JavaScript"
-    },
-    {
-      "id": 14,
-      "name": "HTML"
-    },
-    {
-      "id": 15,
-      "name": "CSS"
     }
   ]
 }

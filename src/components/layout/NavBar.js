@@ -4,8 +4,6 @@ import Container from "./Container";
 import Logo from '../../img/logo.png';
 
 function NavBar(){
-
-  const logo = './src/img/logo.png'
     return(
         <nav className={styles.navBar}>
           <Container>

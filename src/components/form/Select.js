@@ -5,7 +5,7 @@ function Select({name, value,text, handleOnChange, options}){
         <div className={styles.formControl}>
             <label htmlFor={name}>{text}:</label>
             <select name={name} id={name} onChange={handleOnChange} value={value || ''} required>
-                <option disabled selected>Selecione uma opção</option>
+                <option disabled value=''>Selecione uma opção</option>
                 {options.map((option) => (
                     <option value={option.id} key={option.id}>{option.name}</option>
                 ))}
