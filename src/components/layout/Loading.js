@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styles from './Loading.module.css';
 import Loading from '../../img/loading-svgrepo-com.svg'
 
