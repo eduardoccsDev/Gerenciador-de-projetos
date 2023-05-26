@@ -1,0 +1,102 @@
+.projectCard{
+    padding: 1em;
+    border-radius: 10px;
+    width: 24%;
+    margin: 0.5%;
+    background-color: #fff;
+    box-shadow:0px 5px 10px 0px #00000014;
+    transition: 0.5s;
+    border: solid 2px #fff;
+}
+.projectCard:hover{
+    border:solid 2px #fcab54;
+}
+.projectCard h4{
+    color: #333;
+    padding: .4em;
+    margin-bottom: 1.3em;
+    font-size: 1.3em;
+}
+.projectCard p {
+    color: #7a7a7a;
+    margin-bottom: 1em;
+}
+.projectCard p span{
+    font-weight: bold;
+}
+.categoryText{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+.categoryText span{
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #cccc;
+    margin-right: 5px;
+}
+.categoryText .infra{
+    background-color: #559fe4;
+}
+.categoryText .desenvolvimento{
+    background-color: #cefa69;
+}
+.categoryText .design{
+    background-color: #b37ef0;
+}
+.categoryText .planejamento{
+    background-color: #f34b91;
+}
+.categoryText .redesSociais{
+    background-color: rgb(74, 255, 255);
+}
+.categoryText .manutencao{
+    background-color: #ff4f4f;
+}
+.categoryText .servidor{
+    background-color: #f7ff8a;
+}
+.projectCardActions{
+    margin-top: 1.2em;
+    display: flex;
+    align-items: center;
+}
+.projectCardActions a, 
+.projectCardActions button{
+    text-decoration: none;
+    border: none;
+    color: #fff;
+    font-size: .9em;
+    padding: .6em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+    transition: 0.5s;
+}
+.projectCardActions svg{
+    margin-right: .5em;
+}
+.projectCardActions a{
+    background-color: #1398b3;
+}
+.projectCardActions button{
+    background-color: #dd3f3f;
+}
+.projectCardActions a:hover{
+    background-color: #1CC8EB;
+}
+.projectCardActions button:hover{
+    background-color: #ff4747;
+}
+.orcamento{
+    font-weight: 400;
+}
+.orcamento span{
+    font-size: 1em;
+    color: #fcab54;
+}
