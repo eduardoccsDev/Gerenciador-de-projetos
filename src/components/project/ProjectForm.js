@@ -22,8 +22,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
         .then((resp) => resp.json())
         .then((data) => {
             setCategoria(data)
-        })
-        .catch((err) => console.log(err))
+        }).catch((err) => console.log(err))
     }, []);
 
     const submit = (e) => {
@@ -34,9 +33,9 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
 
     function handleChange(e){
         setProjeto({...projeto, [e.target.name]: e.target.value })
-        console.log(projeto)
+        //console.log(projeto)
     }
-    
+
     function handleCategory(e){
         setProjeto({...projeto, category: {
             id: e.target.value,
@@ -72,7 +71,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
             text='Categoria do projeto'
             options={categoria}
             value={projeto.category ? projeto.category.id : ''}
-            />            
+            />
             <div>                
                 <SubmitButton 
                 text={btnText}

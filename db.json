@@ -1,15 +1,27 @@
 {
   "projetos": [
     {
-      "nomeProjeto": "Fundação Renova",
-      "orcamento": "50000",
+      "nomeProjeto": "Teste imagem",
+      "orcamento": "123",
+      "category": {
+        "id": "1",
+        "name": "Infra"
+      },
+      "[object File]": {},
+      "cost": 0,
+      "services": [],
+      "id": 1
+    },
+    {
+      "nomeProjeto": "teste imagem 2",
+      "orcamento": "456",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
       },
       "cost": 0,
       "services": [],
-      "id": 1
+      "id": 2
     }
   ],
   "categorias": [
