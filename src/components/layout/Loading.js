@@ -1,12 +1,12 @@
 import styles from './Loading.module.css';
-import Loading from '../../img/loading-svgrepo-com.svg'
+import LoadingSvg from '../../img/loading-svgrepo-com.svg'
 
-function LinkButton({to, text}){
+function Loading(){
     return(
         <div className={styles.loaderContainer}>
-            <img className={styles.loader} src={Loading} alt='Loading'/>
+            <img className={styles.loader} src={LoadingSvg} alt='Loading'/>
         </div>
     )
 
 }
-export default LinkButton
+export default Loading

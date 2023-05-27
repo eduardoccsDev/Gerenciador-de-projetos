@@ -1,0 +1,59 @@
+.projetoDetails{
+    padding:2em;
+    background-color: #fff;
+    margin-block: 3em;
+    border-radius: 10px;
+}
+.projetoDetails h1, 
+.projetoDetails h2,
+.projetoDetails p{
+    margin-bottom: .5em;
+}
+.projetoDetails h1{
+    color: #333;
+    padding: .4em;
+}
+.projetoDetails h1 span {
+    color: #FCAB54;
+    font-size: 32px;
+}
+.projetoDetails span{
+    font-weight: bold;
+    font-size: 18px;
+}
+.detailsContainer,
+.serviceFormContainer{
+    border-bottom: 1px solid #d8d8d8;
+    margin-bottom: 1.2em;
+    padding-bottom: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.btn{
+    background-color:#333;
+    color:#fff;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    max-height: 40px;
+}
+.btn:hover{
+    background-color:#fcab54;
+    box-shadow: 0px 5px 10px 0px #0000001f;
+    transform: scale(1.05);
+}
+.projetoInfo{
+    width: 100%;
+}
+.projetoInfo p {
+    color: #7a7a7a;
+    font-size: 18px;
+    font-weight: 500;
+}
+.projetoInfo span {
+    color: #333;
+}

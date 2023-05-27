@@ -1,57 +1,69 @@
 {
   "projetos": [
     {
-      "nomeProjeto": "Teste imagem",
-      "orcamento": "123",
+      "nomeProjeto": "Projeto teste 1",
+      "orcamento": "1000",
       "category": {
-        "id": "1",
+        "id": "infra",
         "name": "Infra"
       },
-      "[object File]": {},
       "cost": 0,
       "services": [],
       "id": 1
     },
     {
-      "nomeProjeto": "teste imagem 2",
-      "orcamento": "456",
+      "nomeProjeto": "Projeto teste 2",
+      "orcamento": "1000",
       "category": {
-        "id": "2",
+        "id": "desenvolvimento",
         "name": "Desenvolvimento"
       },
       "cost": 0,
       "services": [],
       "id": 2
+    },
+    {
+      "nomeProjeto": "Projeto teste 3",
+      "orcamento": "55000",
+      "category": {
+        "id": "3",
+        "name": "Design"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 3
     }
   ],
   "categorias": [
     {
       "id": 1,
-      "name": "Infra"
+      "name": "Infra",
+      "value": "infra"
     },
     {
       "id": 2,
-      "name": "Desenvolvimento"
+      "name": "Desenvolvimento",
+      "value": "desenvolvimento"
     },
     {
       "id": 3,
-      "name": "Design"
+      "name": "Design",
+      "value": "design"
     },
     {
       "id": 4,
-      "name": "Planejamento"
+      "name": "Planejamento",
+      "value": "planejamento"
     },
     {
       "id": 5,
-      "name": "Redes Sociais"
+      "name": "Suporte",
+      "value": "suporte"
     },
     {
       "id": 6,
-      "name": "Manutenção"
-    },
-    {
-      "id": 7,
-      "name": "Servidor"
+      "name": "Servidor",
+      "value": "servidor"
     }
   ]
 }

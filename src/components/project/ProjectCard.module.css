@@ -6,10 +6,11 @@
     background-color: #fff;
     box-shadow:0px 5px 10px 0px #00000014;
     transition: 0.5s;
-    border: solid 2px #fff;
+    border: solid 1px #fff;
 }
 .projectCard:hover{
-    border:solid 2px #fcab54;
+    border:solid 1px #fcab54;
+    transform: scale(1.05);
 }
 .projectCard h4{
     color: #333;
@@ -49,11 +50,8 @@
 .categoryText .planejamento{
     background-color: #f34b91;
 }
-.categoryText .redesSociais{
+.categoryText .suporte{
     background-color: rgb(74, 255, 255);
-}
-.categoryText .manutencao{
-    background-color: #ff4f4f;
 }
 .categoryText .servidor{
     background-color: #f7ff8a;
@@ -99,4 +97,53 @@
 .orcamento span{
     font-size: 1em;
     color: #fcab54;
+}
+.infra .imgProjeto{
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/infraestrutura.svg');
+    background-position: center;
+    background-size: contain;
+}
+.desenvolvimento .imgProjeto{
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/api.svg');
+    background-position: center;
+    background-size: contain;
+}
+.design .imgProjeto{
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/web-design.svg');
+    background-position: center;
+    background-size: contain;
+}
+.planejamento .imgProjeto{
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/planejamento.svg');
+    background-position: center;
+    background-size: contain;
+}
+.suporte .imgProjeto{
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/suporte-tecnico.svg');
+    background-position: center;
+    background-size: contain;
+}
+.servidor .imgProjeto{
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/armazenamento-de-banco-de-dados.svg');
+    background-position: center;
+    background-size: contain;
+}
+h4{
+    display: flex;
+    align-items: center;
+}
+.imgProjeto{
+    margin-right: .5em;
 }
