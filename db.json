@@ -12,25 +12,21 @@
       "id": 1
     },
     {
-      "nomeProjeto": "Projeto teste 2",
-      "orcamento": "1000",
-      "category": {
-        "id": "desenvolvimento",
-        "name": "Desenvolvimento"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 2
-    },
-    {
       "nomeProjeto": "Projeto teste 3",
-      "orcamento": "55000",
+      "orcamento": "2500",
       "category": {
         "id": "3",
         "name": "Design"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 300,
+      "services": [
+        {
+          "nameServico": "Serviço teste 1",
+          "cost": "300",
+          "descricao": "Faz isso aqui...",
+          "id": "5cb6d815-acd6-4731-a34d-5a101cc00cc7"
+        }
+      ],
       "id": 3
     }
   ],

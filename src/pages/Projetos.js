@@ -68,6 +68,7 @@ function Projetos(){
                         orcamento={projeto.orcamento}
                         category={projeto.category.name}
                         key={projeto.id}
+                        nServicos = {projeto.services}
                         handleRemove={removeProject}
                         />
                 ))}

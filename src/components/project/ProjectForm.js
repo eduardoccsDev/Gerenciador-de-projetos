@@ -53,7 +53,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
             placeholder='Insira o nome do projeto'
             handleOnChange={handleChange}
             required='required'
-            value={projeto.name}
+            value={projeto.nomeProjeto}
             />
             <Input
             type='number'
