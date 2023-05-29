@@ -1,5 +1,5 @@
 import styles from './Home.module.css';
-import Savings from '../img/gerenciamento-de-projetos.svg'
+import Savings from '../img/logo.png'
 import LinkButton from '../components/layout/LinkButton';
 function Home(){
     return(

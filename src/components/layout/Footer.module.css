@@ -1,8 +1,9 @@
 .footer{
-    background-color: #fcab54;
-    color:#fff;
+    background-color: #1a1a1a;
+    color:#00ffea;
     padding:3em;
     text-align: center;
+    border-radius: 10px 10px 0px 0px;
 }
 .socialList{
     display:flex;
@@ -16,10 +17,12 @@
 .socialList svg{
     font-size: 1.5em;
     cursor: pointer;
-    color: #fff;
+    color: #00ffea;
+    transition: 0.5s;
 }
 .socialList svg:hover{
-    color: #333;
+    color: #fff;
+    transform: scale(1.05);
 }
 .copyRight{
     margin-top:2em;

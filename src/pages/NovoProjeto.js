@@ -29,9 +29,13 @@ function NovoProjeto(){
 
     return(
         <div className={styles.PageContainerNovoProjeto} >
-            <h1>Criar Projeto <IoCreateOutline/></h1>
-            <p>Crie seu projeto para depois adicionar os serviços.</p>
-            <ProjectForm handleSubmit={createPost} btnText='Criar Projeto'/>
+            <div className={styles.Box}>
+                <div className={styles.boxForm}>
+                    <h1>Criar Projeto <IoCreateOutline/></h1>
+                    <p>Crie seu projeto para depois adicionar os serviços.</p>
+                    <ProjectForm handleSubmit={createPost} btnText='Criar Projeto'/>
+                </div>
+            </div>
         </div>
     )
 }

@@ -1,13 +1,60 @@
 .PageContainerNovoProjeto{
-    width: 450px;
+    width: 500px;
     margin: 0 auto;
     padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .PageContainerNovoProjeto h1{
     margin-bottom: 0.5em;
+    color: #00ffea;
 }
 .PageContainerNovoProjeto p{
-    color:#7b7b7b;
-    margin-bottom:12px;
+    color:#eee;
+    margin-bottom:30px;
 }
-    
+.boxForm{
+    position: absolute;
+    inset: 5px;
+    border-radius: 16px;
+    background: #111;
+    z-index: 1;
+    padding: 1.5em;
+}
+.Box{
+    position: relative;
+    width: 400px;
+    height: 550px;
+    background: rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.Box::after{
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background-image: conic-gradient(transparent,transparent,transparent, #2CB0BD);
+    animation: animate 4s linear infinite;
+    animation-delay: -2s;
+}
+.Box::before{
+    content: '';
+    position: absolute;
+    width: 800px;
+    height: 800px;
+    background-image: conic-gradient(transparent,transparent,transparent, #7d58ff);
+    animation: animate 4s linear infinite;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

@@ -11,14 +11,14 @@
     margin-bottom: .5em;
 }
 .PageContainerHome h1 .destaque{
-    color: #fcab54;
+    color: #00ffea;
     padding: 0 .2em;
-    background-color: #fff;
+    background-color: #1a1a1a;
     border-radius: 10px;
 }
 .PageContainerHome p{
     margin-bottom:1.5em;
-    color:#7b7b7b;
+    color:#fff;
 }
 .PageContainerHome img{
     width: 350px;

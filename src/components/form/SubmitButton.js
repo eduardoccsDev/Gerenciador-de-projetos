@@ -3,7 +3,7 @@ import { IoCreate } from 'react-icons/io5';
 function SubmitButton({text}){
 
     return(
-        <div >
+        <div className={styles.btnContainer}>
             <button className={styles.btn} type="submit"><IoCreate/>{text}</button>
         </div>
     )

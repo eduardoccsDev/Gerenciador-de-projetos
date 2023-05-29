@@ -5,19 +5,36 @@
 }
 .formControl label{
     margin-bottom: .6em;
-    font-weight: bold;
-    color:#333;
+    font-weight: 600;
+    color:#eee;
 }
 .formControl input{
     width: 100%;
+    color: #eeeeee;
     margin-bottom: 12px;
     height: 38px;
     padding: 2px 8px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0px 2px 3px 0px #0000001a;
+    background-color: #111;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #eeeeee17;
 }
-.formControl::placeholder{
-    color:#7b7b7b;
+.formControl input::placeholder{
+    color:#d4d4d4;
+}
+input:focus{
+    outline: none;
+    border-bottom: 1px solid #00ffea;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
