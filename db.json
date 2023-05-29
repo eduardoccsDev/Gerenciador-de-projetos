@@ -1,33 +1,40 @@
 {
   "projetos": [
     {
-      "nomeProjeto": "Projeto teste 1",
-      "orcamento": "1000",
+      "nomeProjeto": "Fundação Renova",
+      "orcamento": "55000",
       "category": {
-        "id": "infra",
-        "name": "Infra"
+        "id": "2",
+        "name": "Desenvolvimento"
       },
-      "cost": 0,
-      "services": [],
-      "id": 1
-    },
-    {
-      "nomeProjeto": "Projeto teste 3",
-      "orcamento": "2500",
-      "category": {
-        "id": "3",
-        "name": "Design"
-      },
-      "cost": 300,
+      "cost": 32500,
       "services": [
         {
-          "nameServico": "Serviço teste 1",
-          "cost": "300",
-          "descricao": "Faz isso aqui...",
-          "id": "5cb6d815-acd6-4731-a34d-5a101cc00cc7"
+          "nameServico": "Contratar DEVs",
+          "cost": "20000",
+          "descricao": "Ficarão responsáveis por desenvolver  a aplicação web",
+          "id": "1368d5bf-ae34-4192-a2e8-66a7524889ef"
+        },
+        {
+          "nameServico": "Contratar Social Midea",
+          "cost": "5000",
+          "descricao": "Ficará responsável pelas campanhas das redes sociais",
+          "id": "e11b977b-8b98-469a-ad5f-b930be58a566"
+        },
+        {
+          "nameServico": "Contratar Servidor",
+          "cost": "3500",
+          "descricao": "Contratar plano de servidor compatível com a aplicação",
+          "id": "03e98a41-a84e-43cc-8dc3-175878fd944f"
+        },
+        {
+          "nameServico": "Contratar Web Desing",
+          "cost": "4000",
+          "descricao": "Ficará responsável por estruturar o design da aplicação web ",
+          "id": "beb77924-9216-4ffb-a0f8-3a80af6afb2c"
         }
       ],
-      "id": 3
+      "id": 6
     }
   ],
   "categorias": [

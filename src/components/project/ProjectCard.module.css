@@ -1,25 +1,24 @@
 .projectCard{
     padding: 1em;
-    border-radius: 10px;
+    border-radius: 20px;
     width: 24%;
     margin: 0.5%;
-    background-color: #fff;
-    box-shadow:0px 5px 10px 0px #00000014;
+    background-color: #111;
     transition: 0.5s;
-    border: solid 1px #fff;
+    border: solid 1px #111;
 }
 .projectCard:hover{
-    border:solid 1px #fcab54;
-    transform: scale(1.05);
+    border:solid 1px #00ffea;
+    transform: scale(1.03);
 }
 .projectCard h4{
-    color: #333;
+    color: #eee;
     padding: .4em;
     margin-bottom: 1.3em;
     font-size: 1.3em;
 }
 .projectCard p {
-    color: #7a7a7a;
+    color: #eee;
     margin-bottom: 1em;
 }
 .projectCard p span{
@@ -35,7 +34,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #cccc;
+    background-color: #eee;
     margin-right: 5px;
 }
 .categoryText .infra{
@@ -80,23 +79,23 @@
     margin-right: .5em;
 }
 .projectCardActions a{
-    background-color: #1398b3;
+    background-color: #00dfcc;
 }
 .projectCardActions button{
-    background-color: #dd3f3f;
+    background-color: #6140d8;
 }
 .projectCardActions a:hover{
-    background-color: #1CC8EB;
+    background-color: #72ddd4;
 }
 .projectCardActions button:hover{
-    background-color: #ff4747;
+    background-color: #724bff;
 }
 .orcamento{
     font-weight: 400;
 }
 .orcamento span{
     font-size: 1em;
-    color: #fcab54;
+    color: #00dfcc;
 }
 .infra .imgProjeto{
     width: 40px;
@@ -144,6 +143,10 @@ h4{
     display: flex;
     align-items: center;
 }
-.imgProjeto{
-    margin-right: .5em;
+.imgContainer{
+    padding: 10px;
+    background-color: #71f1e7;
+    text-align: center;
+    margin-right: 0.6em;
+    border-radius: 100%;
 }

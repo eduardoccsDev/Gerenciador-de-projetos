@@ -6,14 +6,40 @@ import styles from "./Projetos.module.css"
 import Loading from '../components/layout/Loading'
 import ProjectCard from "../components/project/ProjectCard"
 import { useState, useEffect } from "react"
+import React from 'react';
+import {BiSearch} from 'react-icons/bi'
 
 function Projetos(){
 
-    const [projetos, setProjetos] = useState([])
-    const [removeLoading, setRemoveLoading] = useState(false)
-    const [projetoMessage, setProjetoMessage] = useState('')
+    const [projetos, setProjetos] = useState([]);
+    const [removeLoading, setRemoveLoading] = useState(false);
+    const [projetoMessage, setProjetoMessage] = useState('');
+    const location = useLocation();
+    const excludeColumns = ['id'];
+    const [search, setSearch] = useState('');
+    const [data, setData] = useState(projetos);
 
-    const location = useLocation()
+    
+    const handleChange = value => {
+        setSearch(value);
+        filterData(value);
+      };
+    
+    const filterData = value =>{
+        const lowerCaseValue = value.toLowerCase().trim();
+        if(!lowerCaseValue){
+            setData(projetos);
+        }
+        else{
+            const filteredData = projetos.filter(item => {
+                return Object.keys(item).some(key =>{
+                    return excludeColumns.includes(key) ? false : item[key].toString().toLowerCase().includes(lowerCaseValue);
+                })
+            });
+            setData(filteredData);
+        }
+    }
+      
     let message = ''
     if(location.state){
         message = location.state.message
@@ -56,12 +82,22 @@ function Projetos(){
             <div className={styles.tittleContainer}>
                 <h1>Meus Projetos</h1>
                 <LinkButton text="Novo Projeto" to="/novoprojeto" />  
-            </div>      
+            </div>  
             {message && <Message type='success' msg={message}/>}
             {projetoMessage && <Message type='success' msg={projetoMessage}/>}
+            <div className={styles.searchContainer}>
+                <BiSearch/>
+                <input 
+                type="text" 
+                className={styles.search}
+                placeholder="Buscar projeto..."
+                value={search} 
+                onChange={e => handleChange(e.target.value)}
+                />
+            </div>
             <Container customClass="start">
-                {projetos.length > 0 &&
-                    projetos.map((projeto) => (
+                {data.length > 0 &&
+                    data.map((projeto) => (
                         <ProjectCard 
                         id={projeto.id}
                         nomeProjeto={projeto.nomeProjeto}
@@ -77,6 +113,9 @@ function Projetos(){
                     <p className={styles.messageProjetos}>Não há projetos cadastrados </p>
                 )}
             </Container>
+            <div>
+                {data.length === 0 && <span className={styles.semProjetos}>Sem resultados para a busca!</span>}
+            </div>
         </div>
     )
 }

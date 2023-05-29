@@ -17,3 +17,37 @@
     text-align: center;
     margin-bottom: 2em;
 }
+.search{
+    border-radius: 10px;
+    border:none;
+    padding: .5em;
+    background-color: #111;
+    color: #eee; 
+    font-size: 16px;
+    width: 550px;   
+}
+.search::placeholder{
+    color: #eee;
+
+}
+.searchContainer{
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+.searchContainer svg{
+    background-color:#00FFEA;
+    padding: 5px;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-bottom: -10px;
+}
+.search:focus{
+    outline: none;
+    border-bottom: none;
+    box-shadow: 0px 0px 10px 5px #00ffea3f;
+}
+.semProjetos{
+    font-size: 18px;
+    font-weight: 500;
+    color: #eee;
+}
