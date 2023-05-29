@@ -1,0 +1,18 @@
+.descricao{
+    max-height: 100px;
+    min-height: 100px;
+    overflow-y: scroll;
+}
+.descricaoP{
+    margin-top: 20px;
+}
+.tittle img{
+    width: 40px;
+    background-color: #00ffea;
+    border-radius: 100%;
+    padding: .2em;
+    float: left;
+}
+.tittle h4{
+    font-size: 18px;
+}

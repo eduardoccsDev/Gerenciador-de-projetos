@@ -2,39 +2,38 @@
   "projetos": [
     {
       "nomeProjeto": "Fundação Renova",
-      "orcamento": "55000",
+      "orcamento": "30000",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 32500,
+      "cost": 7100,
       "services": [
         {
-          "nameServico": "Contratar DEVs",
-          "cost": "20000",
-          "descricao": "Ficarão responsáveis por desenvolver  a aplicação web",
-          "id": "1368d5bf-ae34-4192-a2e8-66a7524889ef"
+          "nameServico": "Contratar Dev",
+          "cost": "1500",
+          "descricao": "Responsável por desenvolver o código para a aplicação web",
+          "id": "7da6e61c-3029-4056-8982-4b3837ed457b"
         },
         {
-          "nameServico": "Contratar Social Midea",
-          "cost": "5000",
-          "descricao": "Ficará responsável pelas campanhas das redes sociais",
-          "id": "e11b977b-8b98-469a-ad5f-b930be58a566"
-        },
-        {
-          "nameServico": "Contratar Servidor",
-          "cost": "3500",
-          "descricao": "Contratar plano de servidor compatível com a aplicação",
-          "id": "03e98a41-a84e-43cc-8dc3-175878fd944f"
-        },
-        {
-          "nameServico": "Contratar Web Desing",
-          "cost": "4000",
-          "descricao": "Ficará responsável por estruturar o design da aplicação web ",
-          "id": "beb77924-9216-4ffb-a0f8-3a80af6afb2c"
+          "nameServico": "Apenas um teste",
+          "cost": "5600",
+          "descricao": "Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, ",
+          "id": "0646e8fa-907c-4e1d-a4fe-34ec287c528e"
         }
       ],
-      "id": 6
+      "id": 1
+    },
+    {
+      "nomeProjeto": "Projeto de teste",
+      "orcamento": "300",
+      "category": {
+        "id": "6",
+        "name": "Servidor"
+      },
+      "cost": 0,
+      "services": [],
+      "id": 2
     }
   ],
   "categorias": [

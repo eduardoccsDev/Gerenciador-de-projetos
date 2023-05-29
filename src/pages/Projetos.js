@@ -15,35 +15,6 @@ function Projetos(){
     const [removeLoading, setRemoveLoading] = useState(false);
     const [projetoMessage, setProjetoMessage] = useState('');
     const location = useLocation();
-    const excludeColumns = ['id'];
-    const [search, setSearch] = useState('');
-    const [data, setData] = useState(projetos);
-
-    
-    const handleChange = value => {
-        setSearch(value);
-        filterData(value);
-      };
-    
-    const filterData = value =>{
-        const lowerCaseValue = value.toLowerCase().trim();
-        if(!lowerCaseValue){
-            setData(projetos);
-        }
-        else{
-            const filteredData = projetos.filter(item => {
-                return Object.keys(item).some(key =>{
-                    return excludeColumns.includes(key) ? false : item[key].toString().toLowerCase().includes(lowerCaseValue);
-                })
-            });
-            setData(filteredData);
-        }
-    }
-      
-    let message = ''
-    if(location.state){
-        message = location.state.message
-    }
 
     useEffect(() => {
         setTimeout(() => {
@@ -62,6 +33,31 @@ function Projetos(){
         }, 300)
     }, []);
 
+    const excludeColumns = ['id'];
+    const [search, setSearch] = useState("");
+    const [data, setData] = useState(projetos);
+    const handleChange = value => {
+        setSearch(value);
+        filterData(value);
+      };
+    const filterData = value =>{
+        const lowerCaseValue = value.toLowerCase().trim();
+        if(!lowerCaseValue){
+            setData(projetos);
+        }
+        else{
+            const filteredData = projetos.filter(item => {
+                return Object.keys(item).some(key =>{
+                    return excludeColumns.includes(key) ? false : item[key].toString().toLowerCase().includes(lowerCaseValue);
+                })
+            });
+            setData(filteredData);
+        }
+    }
+    let message = ''
+    if(location.state){
+        message = location.state.message
+    }
     function removeProject(id){
         fetch(`http://localhost:5000/projetos/${id}`, {
             method: 'DELETE',
@@ -90,14 +86,44 @@ function Projetos(){
                 <input 
                 type="text" 
                 className={styles.search}
-                placeholder="Buscar projeto..."
                 value={search} 
+                placeholder="Buscar projeto..."
                 onChange={e => handleChange(e.target.value)}
                 />
             </div>
             <Container customClass="start">
-                {data.length > 0 &&
-                    data.map((projeto) => (
+                {!search ? 
+                    (
+                        projetos.length > 0 &&
+                            projetos.map((projeto) => (
+                                <ProjectCard 
+                                id={projeto.id}
+                                nomeProjeto={projeto.nomeProjeto}
+                                orcamento={projeto.orcamento}
+                                category={projeto.category.name}
+                                key={projeto.id}
+                                nServicos = {projeto.services}
+                                handleRemove={removeProject}
+                                />
+                        ))
+                    ):
+                    (
+                        projetos.length > 0 &&
+                            data.map((projeto) => (
+                                <ProjectCard 
+                                id={projeto.id}
+                                nomeProjeto={projeto.nomeProjeto}
+                                orcamento={projeto.orcamento}
+                                category={projeto.category.name}
+                                key={projeto.id}
+                                nServicos = {projeto.services}
+                                handleRemove={removeProject}
+                                />
+                        ))
+                    )
+                }
+                {/* {projetos.length > 0 &&
+                    projetos.map((projeto) => (
                         <ProjectCard 
                         id={projeto.id}
                         nomeProjeto={projeto.nomeProjeto}
@@ -107,15 +133,12 @@ function Projetos(){
                         nServicos = {projeto.services}
                         handleRemove={removeProject}
                         />
-                ))}
+                ))} */}
                 {!removeLoading && <Loading/>}
                 {removeLoading && projetos.length === 0 && (
                     <p className={styles.messageProjetos}>Não há projetos cadastrados </p>
                 )}
             </Container>
-            <div>
-                {data.length === 0 && <span className={styles.semProjetos}>Sem resultados para a busca!</span>}
-            </div>
         </div>
     )
 }

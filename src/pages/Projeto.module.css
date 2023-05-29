@@ -1,8 +1,11 @@
 .projetoDetails{
     padding:2em;
-    background-color: #fff;
+    background-color: #1a1a1a29;
     margin-block: 3em;
-    border-radius: 10px;
+    border-radius: 20px;
+    backdrop-filter: blur(30px);
+    border: 1px solid #ffffff37;
+    width: 100%;
 }
 .projetoDetails h1, 
 .projetoDetails h2,
@@ -10,11 +13,11 @@
     margin-bottom: .5em;
 }
 .projetoDetails h1{
-    color: #333;
+    color: #eee;
     padding: .4em;
 }
 .projetoDetails h1 span {
-    color: #FCAB54;
+    color: #00ffea;
     font-size: 32px;
 }
 .projetoDetails span{
@@ -23,16 +26,17 @@
 }
 .detailsContainer,
 .serviceFormContainer{
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 1px solid #ffffff18;
     margin-bottom: 1.2em;
     padding-bottom: 1.2em;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    width: 100%;
 }
 .btn{
-    background-color:#333;
-    color:#fff;
+    background-color:#00ffea;
+    color:#111;
     padding: 0.5em 1em;
     text-decoration: none;
     transition: 0.5s;
@@ -50,12 +54,12 @@
     width: 100%;
 }
 .projetoInfo p {
-    color: #7a7a7a;
+    color: #eee;
     font-size: 18px;
     font-weight: 500;
 }
 .projetoInfo span {
-    color: #333;
+    color: #eee;
 }
 button .spanService{
     font-weight: 400;
