@@ -11,7 +11,7 @@ function Projetos({id, nomeProjeto, orcamento, category, handleRemove, nServicos
 
     return(
         <div className={styles.projectCard} key={id}>
-            <h4><div className={styles.imgProjeto}></div>{nomeProjeto}</h4>
+            <h4 className={`${styles[category.toLowerCase()]}`}><div className={styles.imgProjeto}></div>{nomeProjeto}</h4>
             <p className={styles.orcamento}>
                 <span>Orçamento: </span> R$ 
                 <UINumber format="0,0.00">
