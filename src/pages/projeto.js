@@ -12,6 +12,7 @@ import ServiceCard from "../components/service/ServiceCard"
 import { AiOutlinePlusCircle, AiOutlineCloseCircle, AiOutlineEdit } from 'react-icons/ai'
 import { TbCategory,TbMoneybag } from 'react-icons/tb'
 import {GiPayMoney} from 'react-icons/gi'
+import ReturnBtn from "../components/layout/ReturnBtn"
 function Projeto(){
 
     const { id } = useParams()
@@ -158,10 +159,17 @@ function Projeto(){
                                 </p>
                                 <p>
                                     <span className={styles.iconContainer}><GiPayMoney/></span>
-                                    <span>Orçamento Utilizado: </span> R$ 
-                                    <UINumber format="0,0.00">
-                                        {projeto.cost}
-                                    </UINumber>
+                                    <span>Orçamento Utilizado: </span>
+                                        {projeto.cost != projeto.orcamento ? 
+                                            (
+                                                <span className={styles.costValido}>R$
+                                                    <UINumber format="0,0.00">{projeto.cost}</UINumber>
+                                                </span>
+                                            ):(
+                                                <span className={styles.costAtingido}>R$
+                                                    <UINumber format="0,0.00">{projeto.cost}</UINumber>
+                                                </span>
+                                        )}
                                 </p>
                             </div>
                         ):(
@@ -196,7 +204,7 @@ function Projeto(){
                         </div>
                     </div>
                     <h2>Serviços:</h2>
-                    <Container customClass="start">
+                    <Container customClass="startService">
                             {services.length > 0 &&
                                 services.map((service) => (
                                     <ServiceCard
@@ -210,6 +218,9 @@ function Projeto(){
                             }
                             {services.length === 0 && <p className={styles.retorno}>Não há serviços cadastrados</p>}
                     </Container>
+                    <ReturnBtn
+                    texto = "Voltar"
+                    />
                 </Container>
             </div>
         ):(

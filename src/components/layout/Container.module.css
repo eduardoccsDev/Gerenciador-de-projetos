@@ -11,7 +11,11 @@
 }
 .start{
     justify-content: flex-start;
-
+    width: 100%;
+}
+.startService{
+    justify-content: flex-start;
+    width: 100%;
 }
 .column{
     flex-direction: column;

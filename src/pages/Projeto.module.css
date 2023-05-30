@@ -11,6 +11,9 @@
 .projetoDetails select{
     background-color: transparent;
 }
+.projetoDetails option{
+    color: #1a1a1a;
+}
 .projetoDetails h1, 
 .projetoDetails h2,
 .projetoDetails p{
@@ -91,4 +94,12 @@ button .spanService svg{
     font-weight: 500;
     color: #eee;
     font-size: 18px;
+}
+.costAtingido{
+    color: rgb(255, 85, 85) !important;
+    text-shadow: 0px 0px 6px #ff4646;
+}
+.costValido{
+    color: rgb(98, 255, 138) !important;
+    text-shadow: 0px 0px 6px #74ff86;
 }

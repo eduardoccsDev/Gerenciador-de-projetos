@@ -122,18 +122,6 @@ function Projetos(){
                         ))
                     )
                 }
-                {/* {projetos.length > 0 &&
-                    projetos.map((projeto) => (
-                        <ProjectCard 
-                        id={projeto.id}
-                        nomeProjeto={projeto.nomeProjeto}
-                        orcamento={projeto.orcamento}
-                        category={projeto.category.name}
-                        key={projeto.id}
-                        nServicos = {projeto.services}
-                        handleRemove={removeProject}
-                        />
-                ))} */}
                 {!removeLoading && <Loading/>}
                 {removeLoading && projetos.length === 0 && (
                     <p className={styles.messageProjetos}>Não há projetos cadastrados </p>
