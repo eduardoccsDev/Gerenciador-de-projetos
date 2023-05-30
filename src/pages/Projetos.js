@@ -8,6 +8,7 @@ import ProjectCard from "../components/project/ProjectCard"
 import { useState, useEffect } from "react"
 import React from 'react';
 import {BiSearch} from 'react-icons/bi'
+import { motion } from 'framer-motion';
 
 function Projetos(){
 
@@ -17,7 +18,6 @@ function Projetos(){
     const location = useLocation();
 
     useEffect(() => {
-        setTimeout(() => {
             fetch("http://localhost:5000/projetos", {
                 method: "GET",
                 headers:{
@@ -30,7 +30,6 @@ function Projetos(){
                 setRemoveLoading(true)
             })
             .catch((err) => console.log(err)) 
-        }, 300)
     }, []);
 
     const excludeColumns = ['id'];
@@ -74,7 +73,14 @@ function Projetos(){
     }
 
     return(
-        <div className={styles.projectContainer}>
+        <motion.div 
+        className={styles.projectContainer}
+        key='projetos'
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        exit={{opacity:0}}
+        transition={{ duration: 1 }}
+        >
             <div className={styles.tittleContainer}>
                 <h1>Meus Projetos</h1>
                 <LinkButton text="Novo Projeto" to="/novoprojeto" />  
@@ -91,7 +97,7 @@ function Projetos(){
                 onChange={e => handleChange(e.target.value)}
                 />
             </div>
-            <Container customClass="start">
+            <Container customClass="start" className={styles.teste}>
                 {!search ? 
                     (
                         projetos.length > 0 &&
@@ -127,7 +133,7 @@ function Projetos(){
                     <p className={styles.messageProjetos}>Não há projetos cadastrados </p>
                 )}
             </Container>
-        </div>
+        </motion.div>
     )
 }
 
