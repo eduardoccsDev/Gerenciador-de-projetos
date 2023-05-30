@@ -7,19 +7,13 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 7100,
+      "cost": 1500,
       "services": [
         {
           "nameServico": "Contratar Dev",
           "cost": "1500",
           "descricao": "Responsável por desenvolver o código para a aplicação web",
           "id": "7da6e61c-3029-4056-8982-4b3837ed457b"
-        },
-        {
-          "nameServico": "Apenas um teste",
-          "cost": "5600",
-          "descricao": "Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, Faz isso, ",
-          "id": "0646e8fa-907c-4e1d-a4fe-34ec287c528e"
         }
       ],
       "id": 1
@@ -31,8 +25,15 @@
         "id": "6",
         "name": "Servidor"
       },
-      "cost": 0,
-      "services": [],
+      "cost": 250,
+      "services": [
+        {
+          "nameServico": "teste",
+          "cost": "250",
+          "descricao": "Faz isso aqui...",
+          "id": "198c0cee-4eea-4b99-8a73-a0f1b4fce1dd"
+        }
+      ],
       "id": 2
     }
   ],

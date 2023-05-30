@@ -3,9 +3,9 @@
     border-radius: 20px;
     width: 24%;
     margin: 0.5%;
-    background-color: #111;
+    background-color: #1a1a1a;
     transition: 0.5s;
-    border: solid 1px #111;
+    border: solid 1px #1a1a1a;
 }
 .projectCard:hover{
     border:solid 1px #00ffea;
@@ -64,7 +64,7 @@
 .projectCardActions button{
     text-decoration: none;
     border: none;
-    color: #fff;
+    color: #1a1a1a;
     font-size: .9em;
     padding: .6em 1em;
     cursor: pointer;
@@ -82,13 +82,13 @@
     background-color: #00dfcc;
 }
 .projectCardActions button{
-    background-color: #6140d8;
+    background-color: #8767fa;
 }
 .projectCardActions a:hover{
     background-color: #72ddd4;
 }
 .projectCardActions button:hover{
-    background-color: #724bff;
+    background-color: #a68eff;
 }
 .orcamento{
     font-weight: 400;

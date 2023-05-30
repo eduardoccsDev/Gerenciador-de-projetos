@@ -6,6 +6,7 @@
     margin: 0 auto;
     text-align: center;
     margin-bottom: 2em;
+    width: 100%;
 }
 .success{
     color: #155724;

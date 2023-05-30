@@ -10,6 +10,8 @@ import Message from '../components/layout/Message'
 import ServiceForm from '../components/service/ServiceForm'
 import ServiceCard from "../components/service/ServiceCard"
 import { AiOutlinePlusCircle, AiOutlineCloseCircle, AiOutlineEdit } from 'react-icons/ai'
+import { TbCategory,TbMoneybag } from 'react-icons/tb'
+import {GiPayMoney} from 'react-icons/gi'
 function Projeto(){
 
     const { id } = useParams()
@@ -133,7 +135,7 @@ function Projeto(){
                 <Container customClass='column'>
                     {message && <Message type={type} msg={message}/>}
                     <div className={styles.detailsContainer}>
-                        <h1>Projeto: <span>{projeto.nomeProjeto}</span></h1>
+                        <h1><span>{projeto.nomeProjeto}</span></h1>
                         <button className={styles.btn} onClick={toggleProjetoForm}>
                             {!showProjetoForm ? (
                                 <span className={styles.spanService}><AiOutlineEdit/>Editar projeto</span>
@@ -142,17 +144,20 @@ function Projeto(){
                                     )}
                         </button>
                         {!showProjetoForm ? (
-                            <div className={styles.projetoInfo}>
+                            <div className={styles.projetoInfo} id={styles.firstDiv}>
                                 <p>
+                                    <span className={styles.iconContainer}><TbCategory/></span>
                                     <span>Categoria:</span> {projeto.category.name}
                                 </p>
                                 <p>
+                                    <span className={styles.iconContainer}><TbMoneybag/></span>
                                     <span>Total de Orçamento: </span> R$ 
                                     <UINumber format="0,0.00">
                                         {projeto.orcamento}
                                     </UINumber>
                                 </p>
                                 <p>
+                                    <span className={styles.iconContainer}><GiPayMoney/></span>
                                     <span>Orçamento Utilizado: </span> R$ 
                                     <UINumber format="0,0.00">
                                         {projeto.cost}
@@ -203,7 +208,7 @@ function Projeto(){
                                     />
                                 ))
                             }
-                            {services.length === 0 && <p>Não há serviços cadastrados</p>}
+                            {services.length === 0 && <p className={styles.retorno}>Não há serviços cadastrados</p>}
                     </Container>
                 </Container>
             </div>
