@@ -4,7 +4,6 @@ import Footer from "./components/layout/Footer";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 
 function App() {
- 
     return (
       <Router>
         <NavBar/>
