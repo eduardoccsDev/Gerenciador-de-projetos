@@ -8,8 +8,6 @@ import SubmitButton from "../form/SubmitButton";
 function ProjectForm({handleSubmit,btnText, projetosData}){
 
     const [projeto, setProjeto] = useState(projetosData || {})
-    // const [nomeProjeto, setNomeProjeto] = useState()
-    // const [orcamento, setOrcamento] = useState()
     const [categoria, setCategoria] = useState([])
 
     useEffect(() => {
