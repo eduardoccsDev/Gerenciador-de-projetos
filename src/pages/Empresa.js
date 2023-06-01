@@ -11,6 +11,8 @@ import ReturnBtn from "../components/layout/ReturnBtn";
 function Categorias() {
   const [categorias, setCategorias] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
+  
+
 
   const getCategorias = async () => {
     try {
@@ -32,9 +34,11 @@ function Categorias() {
           <Grid setOnEdit={setOnEdit} categorias={categorias} setCategorias={setCategorias} />
           <ToastContainer autoClose={3000} position={toast.POSITION.TOP_RIGHT} />
         </div>
-        <ReturnBtn
-         texto = "Voltar"
-        />
+        <div className={styles.center}>
+          <ReturnBtn
+          texto = "Voltar"
+          />
+        </div>
       </Container>
   );
 }

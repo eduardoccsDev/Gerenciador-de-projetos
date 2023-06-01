@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 
 export const getCategorias = (_, res) => {
-    const q = "SELECT * FROM categorias";
+    const q = "SELECT * FROM categorias ORDER BY name ASC";
   
     db.query(q, (err, data) => {
       if (err) return res.json(err);
@@ -22,7 +22,7 @@ export const getCategorias = (_, res) => {
     db.query(q, [values], (err) => {
       if (err) return res.json(err);
   
-      return res.status(200).json("Usuário criado com sucesso.");
+      return res.status(200).json("Categoria criada com sucesso.");
     });
   };
   
