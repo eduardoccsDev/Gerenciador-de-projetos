@@ -19,6 +19,7 @@
     border-left: none;
     border-right: none;
     border-bottom: 2px solid #eeeeee17;
+    transition: 0.5s;
 }
 .formControl input::placeholder{
     color:#d4d4d4;

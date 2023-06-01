@@ -1,0 +1,13 @@
+.formCat input{
+    background-color: transparent;
+    width: 300px;
+}
+.formCat{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.formCat > div{
+    margin-right: 2em;
+}

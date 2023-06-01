@@ -4,24 +4,13 @@ import { useEffect, useState } from 'react'
 import Input from "../form/Input";
 import Select from "../form/Select";
 import SubmitButton from "../form/SubmitButton";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ProjectForm({handleSubmit,btnText, projetosData}){
 
     const [projeto, setProjeto] = useState(projetosData || {})
-    const [categoria, setCategoria] = useState([])
-
-    useEffect(() => {
-        fetch("http://localhost:5000/categorias", {
-            method: "GET",
-            headers:{
-                'Content-Type': 'application/json'
-            }
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            setCategoria(data)
-        }).catch((err) => console.log(err))
-    }, []);
 
     const submit = (e) => {
         e.preventDefault()
@@ -41,6 +30,21 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
         },
     })
     }
+
+    const [categorias, setCategorias] = useState([]);
+
+    const getCategorias = async () => {
+        try {
+        const res = await axios.get("http://localhost:8800/categorias");
+        setCategorias(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+        } catch (error) {
+        toast.error(error);
+        }
+    };
+
+    useEffect(() => {
+        getCategorias();
+    }, [setCategorias]);
   
     return(
         <form className={styles.form} onSubmit={submit}>
@@ -67,7 +71,7 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
             name='categoria'
             handleOnChange={handleCategory}
             text='Categoria do projeto'
-            options={categoria}
+            options={categorias}
             value={projeto.category ? projeto.category.id : ''}
             />
             <div>                
