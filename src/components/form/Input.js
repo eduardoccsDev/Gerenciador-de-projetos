@@ -3,7 +3,7 @@ function Input({type,max, min, name, value, text, placeholder, handleOnChange, r
 
     return(
         <div className={styles.formControl}>
-            <label htmlFor={name}>{text}:</label>
+            <label htmlFor={name}>{text}</label>
             <input 
             type={type}
             id={name}

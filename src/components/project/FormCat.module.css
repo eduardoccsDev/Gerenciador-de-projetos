@@ -11,3 +11,25 @@
 .formCat > div{
     margin-right: 2em;
 }
+.colorContainer{
+    background-color: aqua;
+    color:transparent !important;
+    padding: 0px;
+    margin: 0px;
+    height: 35px;
+    display: block;
+    overflow: hidden;
+    width: 50px;
+    border-radius: 10px;
+}
+.sectionColor p{
+    color: #eee;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+.sectionColor{
+    display: flex;
+    flex-direction: column;
+    height: 94px;
+}

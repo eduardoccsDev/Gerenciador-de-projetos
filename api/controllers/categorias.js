@@ -12,11 +12,12 @@ export const getCategorias = (_, res) => {
   
   export const addCategoria = (req, res) => {
     const q =
-      "INSERT INTO categorias (`name`, `descricao`) VALUES(?)";
+      "INSERT INTO categorias (`name`, `descricao`, `cor`) VALUES(?)";
   
     const values = [
       req.body.name,
       req.body.descricao,
+      req.body.cor,
     ];
   
     db.query(q, [values], (err) => {
@@ -28,11 +29,12 @@ export const getCategorias = (_, res) => {
   
   export const updateCategoria = (req, res) => {
     const q =
-      "UPDATE categorias SET `name` = ?, `descricao` = ? WHERE `id` = ?";
+      "UPDATE categorias SET `name` = ?, `descricao` = ? , `cor` = ? WHERE `id` = ?";
   
     const values = [
       req.body.name,
       req.body.descricao,
+      req.body.cor,
     ];
   
     db.query(q, [...values, req.params.id], (err) => {

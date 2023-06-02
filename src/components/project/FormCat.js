@@ -14,6 +14,7 @@ const Form = ({ getCategorias, onEdit, setOnEdit }) => {
 
       categoria.name.value = onEdit.name;
       categoria.descricao.value = onEdit.descricao;
+      categoria.cor.value = onEdit.cor;
     }
   }, [onEdit]);
 
@@ -34,6 +35,7 @@ const Form = ({ getCategorias, onEdit, setOnEdit }) => {
         .put("http://localhost:8800/categorias" + onEdit.id, {
           name: categoria.name.value,
           descricao: categoria.descricao.value,
+          cor: categoria.cor.value,
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
@@ -42,6 +44,7 @@ const Form = ({ getCategorias, onEdit, setOnEdit }) => {
         .post("http://localhost:8800/categorias", {
             name: categoria.name.value,
             descricao: categoria.descricao.value,
+            cor: categoria.cor.value,
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data));
@@ -49,6 +52,7 @@ const Form = ({ getCategorias, onEdit, setOnEdit }) => {
 
     categoria.name.value = "";
     categoria.descricao.value = "";
+    categoria.cor.value = "";
 
     setOnEdit(null);
     getCategorias();
@@ -59,14 +63,23 @@ const Form = ({ getCategorias, onEdit, setOnEdit }) => {
       <Input
       name="name"
       placeholder="Adicione o nome da categoria"
-      text="Nome da categoria"
+      text="Nome da categoria:"
       />
       <Input
       name="descricao"
       placeholder="Descrição"
-      text="Breve descrição da categoria"
+      text="Breve descrição da categoria:"
       type="textarea"
       />
+      <div className={styles.sectionColor}>
+        <p>Cor personalizada:</p>
+        <div className={styles.colorContainer}>
+        <Input
+        name="cor"
+        type="color"
+        />
+        </div>
+      </div>
       <SubmitButton
       text="Salvar"
       />

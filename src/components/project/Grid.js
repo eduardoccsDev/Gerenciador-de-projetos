@@ -26,7 +26,7 @@ const Grid = ({ categorias, setCategorias, setOnEdit }) => {
 
     setOnEdit(null);
   };
-
+  
   const [data, setData] = useState(" ");
   const excludeColumns = ['id'];
   const [search, setSearch] = useState("");
@@ -81,10 +81,8 @@ const Grid = ({ categorias, setCategorias, setOnEdit }) => {
         (
             categorias.length > 0 &&
             categorias.map((item, i) => (
-              <tr 
-              key={i}
-              >
-                <td className={styles.metadeLargura}><TbPoint/>{item.name}</td>
+              <tr key={i}>
+                <td className={styles.metadeLargura}><TbPoint style={{color: item.cor}}/>{item.name}</td>
                 <td className={styles.metadeLargura}>{item.descricao}</td>
                 <td className={styles.editar}>
                   <FaEdit onClick={() => handleEdit(item)} />
