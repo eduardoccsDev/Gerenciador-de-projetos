@@ -53,4 +53,57 @@ export const getCategorias = (_, res) => {
       return res.status(200).json("Categoria deletada com sucesso.");
     });
   };
+// ---------------------------------PROJETOS------------------------------------
+  export const getProjetos = (_, res) => {
+    const q = "SELECT projetos.id, projetos.nome, projetos.orcamento, projetos.categoria, categorias.name , categorias.cor FROM projetos INNER JOIN categorias ON projetos.categoria = categorias.id";
   
+    db.query(q, (err, data) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json(data);
+    });
+  };
+
+   export const addProjetos = (req, res) => {
+    const q =
+      "INSERT INTO projetos (`nome`, `orcamento`, `categoria`) VALUES(?)";
+  
+    const values = [
+      req.body.nome,
+      req.body.orcamento,
+      req.body.categoria,
+    ];
+  
+    db.query(q, [values], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Projeto criado com sucesso.");
+    });
+  };
+  
+  export const updateProjetos = (req, res) => {
+    const q =
+      "UPDATE projetos SET `nome` = ?, `orcamento` = ? , `categoria` = ? WHERE `id` = ?";
+  
+    const values = [
+      req.body.nome,
+      req.body.orcamento,
+      req.body.categoria,
+    ];
+  
+    db.query(q, [...values, req.params.id], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Projeto atualizado com sucesso.");
+    });
+  };
+  
+  export const deleteProjetos = (req, res) => {
+    const q = "DELETE FROM projetos WHERE `id` = ?";
+  
+    db.query(q, [req.params.id], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Projeto deletado com sucesso.");
+    });
+  };

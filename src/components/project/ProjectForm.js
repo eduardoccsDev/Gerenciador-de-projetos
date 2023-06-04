@@ -1,36 +1,17 @@
-
 import styles from "./ProjectForm.module.css"
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Input from "../form/Input";
 import Select from "../form/Select";
 import SubmitButton from "../form/SubmitButton";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom'
 
-function ProjectForm({handleSubmit,btnText, projetosData}){
+function ProjectForm({btnText, projetosData}){
 
-    const [projeto, setProjeto] = useState(projetosData || {})
-
-    const submit = (e) => {
-        e.preventDefault()
-        //console.log(projeto)
-        handleSubmit(projeto)
-    }
-
-    function handleChange(e){
-        setProjeto({...projeto, [e.target.name]: e.target.value })
-        //console.log(projeto)
-    }
-
-    function handleCategory(e){
-        setProjeto({...projeto, category: {
-            id: e.target.value,
-            name: e.target.options[e.target.selectedIndex].text,
-        },
-    })
-    }
-
+    const history = useNavigate()
+    const projeto = {}
     const [categorias, setCategorias] = useState([]);
 
     const getCategorias = async () => {
@@ -45,34 +26,66 @@ function ProjectForm({handleSubmit,btnText, projetosData}){
     useEffect(() => {
         getCategorias();
     }, [setCategorias]);
+
+    // envio do form
+
+    const ref = useRef();
+    const [valorSelecionado, setValorSelecionado] = useState();
+    const handleSubmitProjetos = async (e) => {
+        e.preventDefault();
+
+        const projeto = ref.current;
+
+        if (
+        !projeto.nome.value ||
+        !projeto.orcamento.value ||
+        !projeto.categoria.value
+        ) {
+        return toast.warn("Preencha todos os campos!");
+        }
+        
+        await axios
+            .post("http://localhost:8800/projetos", {
+                nome: projeto.nome.value,
+                orcamento: projeto.orcamento.value,
+                categoria: projeto.categoria.value,
+            })
+            .then(({ data }) => {
+                toast.success(data)
+                history('/projetos')
+            })
+            .catch(({ data }) => toast.error(data));
+
+        projeto.nome.value = "";
+        projeto.orcamento.value = "";
+        projeto.categoria.value = "";
+
+    };
+
   
     return(
-        <form className={styles.form} onSubmit={submit}>
+        <form ref={ref} className={styles.form} onSubmit={handleSubmitProjetos}>
             <Input
             type='text'
-            name='nomeProjeto'            
+            name='nome'            
             text='Nome do projeto'
             placeholder='Insira o nome do projeto'
-            handleOnChange={handleChange}
-            required='required'
-            value={projeto.nomeProjeto}
+            value={projeto.nome}
             />
             <Input
             type='number'
             name='orcamento'            
             text='Orçamento do projeto'
             placeholder='Insira o orçamento total'
-            handleOnChange={handleChange}
-            required='required'
             min='0'
             value={projeto.orcamento}
             />
             <Select
             name='categoria'
-            handleOnChange={handleCategory}
+            handleOnChange={(e) => setValorSelecionado(e.target.value)}
             text='Categoria do projeto'
             options={categorias}
-            value={projeto.category ? projeto.category.id : ''}
+            value={valorSelecionado}
             />
             <div>                
                 <SubmitButton 

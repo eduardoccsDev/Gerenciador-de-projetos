@@ -7,7 +7,7 @@
         "id": "2",
         "name": "Desenvolvimento"
       },
-      "cost": 30000,
+      "cost": 22000,
       "services": [
         {
           "nameServico": "Contratar Dev",
@@ -26,12 +26,6 @@
           "cost": "8000",
           "descricao": "Faz isso aqui...",
           "id": "f57f309f-3ee4-4d8b-af61-83b7bb0046a5"
-        },
-        {
-          "nameServico": "Serviço teste 4",
-          "cost": "8000",
-          "descricao": "Faz isso aqui...",
-          "id": "1da2a00f-a031-479e-a722-1446d1b266cb"
         },
         {
           "nameServico": "Serviço teste 5",
