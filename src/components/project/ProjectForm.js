@@ -6,11 +6,11 @@ import SubmitButton from "../form/SubmitButton";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
-function ProjectForm({btnText, projetosData}){
+function ProjectForm({btnText}){
 
-    const history = useNavigate()
+    // const history = useNavigate()
     const projeto = {}
     const [categorias, setCategorias] = useState([]);
 
@@ -52,7 +52,7 @@ function ProjectForm({btnText, projetosData}){
             })
             .then(({ data }) => {
                 toast.success(data)
-                history('/projetos')
+                // history('/projetos')
             })
             .catch(({ data }) => toast.error(data));
 

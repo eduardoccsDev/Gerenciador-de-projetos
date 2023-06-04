@@ -1,46 +1,27 @@
-import { useNavigate } from 'react-router-dom'
 import ProjectForm from "../components/project/ProjectForm"
 import styles from "./NovoProjeto.module.css"
 import { IoCreateOutline } from 'react-icons/io5';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from 'framer-motion';
 function NovoProjeto(){
-
-    const history = useNavigate()
-
-    function createPost(projetos){
-        //initialize cost and services
-        projetos.cost = 0
-        projetos.services = []
-
-        fetch("http://localhost:5000/projetos", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify(projetos)
-        })
-        .then((resp) => resp.json())
-        .then((data) => {
-            console.log(data)
-            //redirect
-            history('/projetos', {state: {message: 'Projeto criado com sucesso!'}})
-        })
-        .catch(err => console.log(err))
-    }
-
     return(
-        <div className={styles.PageContainerNovoProjeto} >
+        <motion.div 
+        className={styles.PageContainerNovoProjeto} 
+        initial={{scale: 0}}
+        animate={{scale:1}}
+        exit={{scale:0}}
+        transition={{ duration: 0.1 }}
+        >
             <div className={styles.Box}>
                 <div className={styles.boxForm}>
                     <h1>Criar Projeto <IoCreateOutline/></h1>
                     <p>Crie seu projeto para depois adicionar os serviços.</p>
-                    <ProjectForm handleSubmit={createPost} btnText='Criar Projeto'/>
+                    <ProjectForm btnText='Criar Projeto'/>
                     <ToastContainer autoClose={3000} position={toast.POSITION.TOP_RIGHT} />
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
-
 export default NovoProjeto

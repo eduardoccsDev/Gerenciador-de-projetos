@@ -10,7 +10,7 @@ function NavBar(){
             <img className={styles.logo} src={Logo} alt='Gerenciador de projetos'/>
             <ul className={styles.list}>
               <li><Link to="/">Home</Link></li>
-              <li><Link to="/empresa">Empresa</Link></li>
+              <li><Link to="/categorias">Categorias</Link></li>
               <li><Link to="/projetos">Projetos</Link></li>
               <li><Link to="/contato">Contato</Link></li>
             </ul>  

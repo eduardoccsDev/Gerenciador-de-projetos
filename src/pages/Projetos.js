@@ -1,40 +1,23 @@
-import { useLocation } from "react-router-dom"
-import Message from "../components/layout/Message"
+// import { useLocation } from "react-router-dom"
 import Container from "../components/layout/Container"
 import LinkButton from "../components/layout/LinkButton"
 import styles from "./Projetos.module.css"
-import Loading from '../components/layout/Loading'
 import ProjectCard from "../components/project/ProjectCard"
 import { useState, useEffect } from "react"
 import React from 'react';
 import {BiSearch} from 'react-icons/bi'
 import { motion } from 'framer-motion';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 function Projetos(){
 
     const [projetos, setProjetos] = useState([]);
-    const [removeLoading, setRemoveLoading] = useState(false);
-    const [projetoMessage, setProjetoMessage] = useState('');
-    const location = useLocation();
-
-    useEffect(() => {
-            fetch("http://localhost:5000/projetos", {
-                method: "GET",
-                headers:{
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setProjetos(data)
-                setRemoveLoading(true)
-            })
-            .catch((err) => console.log(err)) 
-    }, []);
-
+    // const location = useLocation();
     const excludeColumns = ['id'];
     const [search, setSearch] = useState("");
-    const [data, setData] = useState(projetos);
+    const [data, setData] = useState(" ");
     const handleChange = value => {
         setSearch(value);
         filterData(value);
@@ -53,24 +36,39 @@ function Projetos(){
             setData(filteredData);
         }
     }
-    let message = ''
-    if(location.state){
-        message = location.state.message
-    }
-    function removeProject(id){
-        fetch(`http://localhost:5000/projetos/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(resp => resp.json())
-        .then(() => {
-            setProjetos(projetos.filter((projetos) => projetos.id !== id))
-            setProjetoMessage('Projeto removido com sucesso!')
-        })
-        .catch(err => console.log(err))
-    }
+    // let message = ''
+    // if(location.state){
+    //     message = location.state.message
+    // }
+
+    // axio
+
+    const getProjetos = async () => {
+        try {
+        const res = await axios.get("http://localhost:8800/projetos");
+        setProjetos(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+        } catch (error) {
+        toast.error(error);
+        }
+    };
+
+    useEffect(() => {
+        getProjetos();
+    }, [setProjetos]);
+
+    
+      const handleDelete = async (id) => {
+        await axios
+          .delete("http://localhost:8800/projetos" + id)
+          .then(({ data }) => {
+            const newArray = projetos.filter((projeto) => projeto.id !== id);
+    
+            setProjetos(newArray);
+            toast.success(data);
+          })
+          .catch(({ data }) => toast.error(data));
+    
+      };
 
     return(
         <motion.div 
@@ -85,8 +83,6 @@ function Projetos(){
                 <h1>Meus Projetos</h1>
                 <LinkButton text="Novo Projeto" to="/novoprojeto" />  
             </div>  
-            {message && <Message type='success' msg={message}/>}
-            {projetoMessage && <Message type='success' msg={projetoMessage}/>}
             <div className={styles.searchContainer}>
                 <BiSearch/>
                 <input 
@@ -101,38 +97,43 @@ function Projetos(){
                 {!search ? 
                     (
                         projetos.length > 0 &&
-                            projetos.map((projeto) => (
+                            projetos.map((item, i) => (
                                 <ProjectCard 
-                                id={projeto.id}
-                                nomeProjeto={projeto.nomeProjeto}
-                                orcamento={projeto.orcamento}
-                                category={projeto.category.name}
-                                key={projeto.id}
-                                nServicos = {projeto.services}
-                                handleRemove={removeProject}
+                                id={item.id}
+                                nomeProjeto={item.nome}
+                                orcamento={item.orcamento}
+                                category={item.name}
+                                key={item.id}
+                                handleRemove={handleDelete}
+                                cor = {item.cor}
                                 />
                         ))
                     ):
                     (
                         projetos.length > 0 &&
-                            data.map((projeto) => (
+                            data.map((item, i) => (
                                 <ProjectCard 
-                                id={projeto.id}
-                                nomeProjeto={projeto.nomeProjeto}
-                                orcamento={projeto.orcamento}
-                                category={projeto.category.name}
-                                key={projeto.id}
-                                nServicos = {projeto.services}
-                                handleRemove={removeProject}
+                                id={item.id}
+                                nomeProjeto={item.nome}
+                                orcamento={item.orcamento}
+                                category={item.name}
+                                key={i}
+                                handleRemove={handleDelete}
                                 />
                         ))
                     )
                 }
-                {!removeLoading && <Loading/>}
-                {removeLoading && projetos.length === 0 && (
-                    <p className={styles.messageProjetos}>Não há projetos cadastrados </p>
-                )}
+                {data.length === 0 ? 
+                    (<motion.p className={styles.semRes}
+                        initial={{scale: 0}}
+                        animate={{scale:1}}
+                        exit={{scale:0}}
+                        transition={{ duration: 0.1 }}
+                    >Não há resultados para o que procura!</motion.p>)
+                    :
+                    (<></>)}
             </Container>
+            <ToastContainer autoClose={3000} position={toast.POSITION.TOP_RIGHT} />
         </motion.div>
     )
 }

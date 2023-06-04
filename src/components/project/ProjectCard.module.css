@@ -37,24 +37,6 @@
     background-color: #eee;
     margin-right: 5px;
 }
-.categoryText .infra{
-    background-color: #559fe4;
-}
-.categoryText .desenvolvimento{
-    background-color: #cefa69;
-}
-.categoryText .design{
-    background-color: #b37ef0;
-}
-.categoryText .planejamento{
-    background-color: #f34b91;
-}
-.categoryText .suporte{
-    background-color: rgb(74, 255, 255);
-}
-.categoryText .servidor{
-    background-color: #f7ff8a;
-}
 .projectCardActions{
     margin-top: 1.2em;
     display: flex;
@@ -97,56 +79,7 @@
     font-size: 1em;
     color: #00dfcc;
 }
-.infra .imgProjeto{
-    width: 40px;
-    height: 40px;
-    background-image: url('../../img/infraestrutura.svg');
-    background-position: center;
-    background-size: contain;
-}
-.desenvolvimento .imgProjeto{
-    width: 40px;
-    height: 40px;
-    background-image: url('../../img/api.svg');
-    background-position: center;
-    background-size: contain;
-}
-.design .imgProjeto{
-    width: 40px;
-    height: 40px;
-    background-image: url('../../img/web-design.svg');
-    background-position: center;
-    background-size: contain;
-}
-.planejamento .imgProjeto{
-    width: 40px;
-    height: 40px;
-    background-image: url('../../img/planejamento.svg');
-    background-position: center;
-    background-size: contain;
-}
-.suporte .imgProjeto{
-    width: 40px;
-    height: 40px;
-    background-image: url('../../img/suporte-tecnico.svg');
-    background-position: center;
-    background-size: contain;
-}
-.servidor .imgProjeto{
-    width: 40px;
-    height: 40px;
-    background-image: url('../../img/armazenamento-de-banco-de-dados.svg');
-    background-position: center;
-    background-size: contain;
-}
 h4{
     display: flex;
     align-items: center;
-}
-.imgContainer{
-    padding: 10px;
-    background-color: #71f1e7;
-    text-align: center;
-    margin-right: 0.6em;
-    border-radius: 100%;
 }

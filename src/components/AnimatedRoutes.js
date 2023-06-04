@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation  } from "react-router-dom";
 import Home from '../pages/Home';
-import Empresa from '../pages/Empresa';
+import Categorias from '../pages/Categorias';
 import Contato from '../pages/Contato';
 import Projetos from "../pages/Projetos";
 import NovoProjeto from "../pages/NovoProjeto";
@@ -16,7 +16,7 @@ function AnimatedRoutes(){
             <Container customClass='minHeight'>
                 <Routes location={location} key={location.pathname}>
                     <Route exact path='/' element={<Home />}/>
-                    <Route path='/empresa' element={<Empresa />}/>
+                    <Route path='/categorias' element={<Categorias />}/>
                     <Route path='/projetos' element={<Projetos />}/>
                     <Route path='/contato' element={<Contato />}/>
                     <Route path='/novoprojeto' element={<NovoProjeto />}/>
