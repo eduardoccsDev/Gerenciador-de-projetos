@@ -1,23 +1,28 @@
-// import { useLocation } from "react-router-dom"
 import Container from "../components/layout/Container"
 import LinkButton from "../components/layout/LinkButton"
 import styles from "./Projetos.module.css"
 import ProjectCard from "../components/project/ProjectCard"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import React from 'react';
 import {BiSearch} from 'react-icons/bi'
 import { motion } from 'framer-motion';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import 'reactjs-popup/dist/index.css';
+import Input from "../components/form/Input";
+import Select from "../components/form/Select";
+import SubmitButton from "../components/form/SubmitButton";
 
 function Projetos(){
 
+    const ref = useRef();
     const [projetos, setProjetos] = useState([]);
     // const location = useLocation();
     const excludeColumns = ['id'];
     const [search, setSearch] = useState("");
     const [data, setData] = useState(" ");
+    const [isActive, setIsActive] = useState(false);
     const handleChange = value => {
         setSearch(value);
         filterData(value);
@@ -36,10 +41,6 @@ function Projetos(){
             setData(filteredData);
         }
     }
-    // let message = ''
-    // if(location.state){
-    //     message = location.state.message
-    // }
 
     // axio
 
@@ -70,6 +71,85 @@ function Projetos(){
     
       };
 
+    const projeto = {}
+    const [categorias, setCategorias] = useState([]);
+    const [valorSelecionado, setValorSelecionado] = useState();
+
+    const getCategorias = async () => {
+        try {
+        const res = await axios.get("http://localhost:8800/categorias");
+        setCategorias(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+        } catch (error) {
+        toast.error(error);
+        }
+    };
+
+    useEffect(() => {
+        getCategorias();
+    }, [setCategorias]);
+
+
+    const [onEdit, setOnEdit] = useState(null);    
+    const handleEdit = (item) => {
+    setOnEdit(item);
+    // setIsActive(current => !current);
+    setIsActive(true);
+    };
+    function closeForm(){
+        setIsActive(false);
+    }
+
+      useEffect(() => {
+        if (onEdit) {
+        const projeto = ref.current;
+
+        projeto.nome.value = onEdit.nome;
+        projeto.orcamento.value = onEdit.orcamento;
+        projeto.categoria.value = onEdit.categoria;
+        }
+    }, [onEdit]);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const projeto = ref.current;
+
+        if (
+        !projeto.nome.value ||
+        !projeto.orcamento.value ||
+        !projeto.categoria.value
+        ) {
+        return toast.warn("Preencha todos os campos!");
+        }
+
+        if (onEdit) {
+        await axios
+            .put("http://localhost:8800/projetos" + onEdit.id, {
+            nome: projeto.nome.value,
+            orcamento: projeto.orcamento.value,
+            categoria: projeto.categoria.value,
+            })
+            .then(({ data }) => toast.success(data))
+            .catch(({ data }) => toast.error(data));
+        } else {
+        await axios
+            .post("http://localhost:8800/projetos", {
+                nome: projeto.nome.value,
+                orcamento: projeto.orcamento.value,
+                categoria: projeto.categoria.value,
+            })
+            .then(({ data }) => toast.success(data))
+            .catch(({ data }) => toast.error(data));
+        }
+
+        projeto.nome.value = "";
+        projeto.orcamento.value = "";
+        projeto.categoria.value = "";
+
+        setOnEdit(null);
+        getProjetos();
+    };    
+
     return(
         <motion.div 
         className={styles.projectContainer}
@@ -93,20 +173,65 @@ function Projetos(){
                 onChange={e => handleChange(e.target.value)}
                 />
             </div>
+            {isActive ? 
+            (
+                <motion.div
+                initial={{height:0, opacity:0}}
+                animate={{height:"auto",opacity:1}}
+                exit={{height:0,opacity:0}}
+                transition={{ duration: 0.5 }}
+                >
+                    <button onClick={closeForm}>Fechar</button>
+                    <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
+                        <Input
+                        type='text'
+                        name='nome'            
+                        text='Nome do projeto'
+                        placeholder='Insira o nome do projeto'
+                        value={projeto.nome}
+                        />
+                        <Input
+                        type='number'
+                        name='orcamento'            
+                        text='Orçamento do projeto'
+                        placeholder='Insira o orçamento total'
+                        min='0'
+                        value={projeto.orcamento}
+                        />
+                        <Select
+                        name='categoria'
+                        handleOnChange={(e) => setValorSelecionado(e.target.value)}
+                        text='Categoria do projeto'
+                        options={categorias}
+                        value={valorSelecionado}
+                        />
+                        <div>                
+                            <SubmitButton 
+                            text="SALVAR"
+                            />
+                        </div>
+                    </form>
+                </motion.div>
+            )
+            :
+            (<></>)}
             <Container customClass="start" className={styles.teste}>
                 {!search ? 
                     (
                         projetos.length > 0 &&
                             projetos.map((item, i) => (
-                                <ProjectCard 
-                                id={item.id}
-                                nomeProjeto={item.nome}
-                                orcamento={item.orcamento}
-                                category={item.name}
-                                key={item.id}
-                                handleRemove={handleDelete}
-                                cor = {item.cor}
+                                <>
+                                <ProjectCard
+                                    id={item.id}
+                                    nomeProjeto={item.nome}
+                                    orcamento={item.orcamento}
+                                    category={item.name}
+                                    key={item.id}
+                                    handleRemove={handleDelete}
+                                    cor={item.cor} 
                                 />
+                                    <button  onClick={() => handleEdit(item)}>Editar</button>
+                                </>
                         ))
                     ):
                     (

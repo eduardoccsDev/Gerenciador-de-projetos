@@ -8,7 +8,8 @@ import {
     updateCategoria,
     updateProjetos, 
     deleteCategoria,
-    deleteProjetos 
+    deleteProjetos, 
+    getProjetosUnico
 
 } from "../controllers/categorias.js";
 
@@ -16,6 +17,7 @@ const router = express.Router();
 
 router.get("/categorias", getCategorias);
 router.get("/projetos", getProjetos);
+router.get("/projetos:id", getProjetosUnico);
 
 router.post("/categorias", addCategoria);
 router.post("/projetos", addProjetos);

@@ -64,6 +64,19 @@ export const getCategorias = (_, res) => {
     });
   };
 
+  export const getProjetosUnico = (req, res) => {
+    const q = "SELECT projetos.id, projetos.nome, projetos.orcamento, projetos.categoria, categorias.name , categorias.cor FROM projetos INNER JOIN categorias ON projetos.categoria = categorias.id WHERE `projetos.id` = ?";
+    const values = [
+      req.body.id,
+    ];
+
+    db.query(q, [...values, req.params.id], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Projeto atualizado com sucesso");
+    });
+  };
+
    export const addProjetos = (req, res) => {
     const q =
       "INSERT INTO projetos (`nome`, `orcamento`, `categoria`) VALUES(?)";
