@@ -13,6 +13,7 @@ import 'reactjs-popup/dist/index.css';
 import Input from "../components/form/Input";
 import Select from "../components/form/Select";
 import SubmitButton from "../components/form/SubmitButton";
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 
 function Projetos(){
 
@@ -88,7 +89,6 @@ function Projetos(){
         getCategorias();
     }, [setCategorias]);
 
-
     const [onEdit, setOnEdit] = useState(null);    
     const handleEdit = (item) => {
     setOnEdit(item);
@@ -149,117 +149,113 @@ function Projetos(){
         setOnEdit(null);
         getProjetos();
     };    
-
+    
     return(
-        <motion.div 
-        className={styles.projectContainer}
-        key='projetos'
-        initial={{opacity:0}}
-        animate={{opacity:1}}
-        exit={{opacity:0}}
-        transition={{ duration: 1 }}
-        >
-            <div className={styles.tittleContainer}>
-                <h1>Meus Projetos</h1>
-                <LinkButton text="Novo Projeto" to="/novoprojeto" />  
-            </div>  
-            <div className={styles.searchContainer}>
-                <BiSearch/>
-                <input 
-                type="text" 
-                className={styles.search}
-                value={search} 
-                placeholder="Buscar projeto..."
-                onChange={e => handleChange(e.target.value)}
-                />
-            </div>
-            {isActive ? 
+        <><>{isActive ?
             (
                 <motion.div
-                initial={{height:0, opacity:0}}
-                animate={{height:"auto",opacity:1}}
-                exit={{height:0,opacity:0}}
-                transition={{ duration: 0.5 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className={styles.popup}
                 >
-                    <button onClick={closeForm}>Fechar</button>
-                    <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
-                        <Input
-                        type='text'
-                        name='nome'            
-                        text='Nome do projeto'
-                        placeholder='Insira o nome do projeto'
-                        value={projeto.nome}
-                        />
-                        <Input
-                        type='number'
-                        name='orcamento'            
-                        text='Orçamento do projeto'
-                        placeholder='Insira o orçamento total'
-                        min='0'
-                        value={projeto.orcamento}
-                        />
-                        <Select
-                        name='categoria'
-                        handleOnChange={(e) => setValorSelecionado(e.target.value)}
-                        text='Categoria do projeto'
-                        options={categorias}
-                        value={valorSelecionado}
-                        />
-                        <div>                
-                            <SubmitButton 
-                            text="SALVAR"
-                            />
-                        </div>
-                    </form>
+                    <div className={styles.popupContainer}>
+                        <div style={{textAlign:"right"}}><button className={styles.closeBtn} onClick={closeForm}><AiOutlineCloseCircle/>Fechar</button></div>
+                        <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
+                            <Input
+                                type='text'
+                                name='nome'
+                                text='Nome do projeto'
+                                placeholder='Insira o nome do projeto'
+                                value={projeto.nome} />
+                            <Input
+                                type='number'
+                                name='orcamento'
+                                text='Orçamento do projeto'
+                                placeholder='Insira o orçamento total'
+                                min='0'
+                                value={projeto.orcamento} />
+                            <Select
+                                name='categoria'
+                                handleOnChange={(e) => setValorSelecionado(e.target.value)}
+                                text='Categoria do projeto'
+                                options={categorias}
+                                value={valorSelecionado} />
+                            <div>
+                                <SubmitButton
+                                    text="Salvar" />
+                            </div>
+                        </form>
+                    </div>
                 </motion.div>
             )
             :
-            (<></>)}
-            <Container customClass="start" className={styles.teste}>
-                {!search ? 
-                    (
-                        projetos.length > 0 &&
+            (<></>)}</>
+            <motion.div
+                className={styles.projectContainer}
+                key='projetos'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+            >
+                <div className={styles.tittleContainer}>
+                    <h1>Meus Projetos</h1>
+                    <LinkButton text="Novo Projeto" to="/novoprojeto" />
+                </div>
+                <div className={styles.searchContainer}>
+                    <BiSearch />
+                    <input
+                        type="text"
+                        className={styles.search}
+                        value={search}
+                        placeholder="Buscar projeto..."
+                        onChange={e => handleChange(e.target.value)} />
+                </div>
+                <Container customClass="start" className={styles.teste}>
+                    {!search ?
+                        (
+                            projetos.length > 0 &&
                             projetos.map((item, i) => (
                                 <>
+                                    <ProjectCard
+                                        id={item.id}
+                                        nomeProjeto={item.nome}
+                                        orcamento={item.orcamento}
+                                        category={item.name}
+                                        key={item.id}
+                                        handleRemove={handleDelete}
+                                        cor={item.cor} 
+                                    />
+                                    <button onClick={() => handleEdit(item)}>Editar</button>
+                                </>
+                            ))
+                        ) :
+                        (
+                            projetos.length > 0 &&
+                            data.map((item, i) => (
                                 <ProjectCard
                                     id={item.id}
                                     nomeProjeto={item.nome}
                                     orcamento={item.orcamento}
                                     category={item.name}
-                                    key={item.id}
-                                    handleRemove={handleDelete}
-                                    cor={item.cor} 
-                                />
-                                    <button  onClick={() => handleEdit(item)}>Editar</button>
-                                </>
-                        ))
-                    ):
-                    (
-                        projetos.length > 0 &&
-                            data.map((item, i) => (
-                                <ProjectCard 
-                                id={item.id}
-                                nomeProjeto={item.nome}
-                                orcamento={item.orcamento}
-                                category={item.name}
-                                key={i}
-                                handleRemove={handleDelete}
-                                />
-                        ))
-                    )
-                }
-                {data.length === 0 ? 
-                    (<motion.p className={styles.semRes}
-                        initial={{scale: 0}}
-                        animate={{scale:1}}
-                        exit={{scale:0}}
-                        transition={{ duration: 0.1 }}
-                    >Não há resultados para o que procura!</motion.p>)
-                    :
-                    (<></>)}
-            </Container>
-            <ToastContainer autoClose={3000} position={toast.POSITION.TOP_RIGHT} />
-        </motion.div>
+                                    key={i}
+                                    handleRemove={handleDelete} />
+                            ))
+                        )}
+                    {data.length === 0 ?
+                        (<motion.p className={styles.semRes}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0 }}
+                            transition={{ duration: 0.1 }}
+                        >Não há resultados para o que procura!</motion.p>)
+                        :
+                        (<></>)}
+                </Container>
+                <ToastContainer autoClose={3000} position={toast.POSITION.TOP_RIGHT} />
+            </motion.div></>
     )
 }
 

@@ -59,3 +59,41 @@
     color: rgb(255, 90, 90);
     text-shadow: 0px 0px 10px rgb(255, 0, 0);
 }
+.popup{
+    position: absolute;
+    background-color: #1a1a1a91;
+    padding: 1.5em;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    backdrop-filter: blur(5px);
+}
+.popupContainer{
+    width: 1200px;
+    margin: auto;
+    padding-block: 5em;
+}
+.closeBtn{
+    color: #333;
+    background-color: #ff5a5a;
+    border: none;
+    padding: .5em 1em;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.closeBtn:hover{
+    background-color: #ff6e6e;
+    box-shadow: 0px 0px 5px 5px #ff646450;
+    transform: scale(1.05);
+}
+.closeBtn svg{
+    width: 18px;
+    height: auto;
+    margin-bottom: -3px;
+    margin-right: 5px;
+}
