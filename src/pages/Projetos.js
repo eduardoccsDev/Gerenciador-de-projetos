@@ -245,6 +245,7 @@ function Projetos(){
                                     category={item.name}
                                     key={i}
                                     handleRemove={handleDelete}
+                                    cor={item.cor}
                                     handleEdit={() => handleEdit(item)} 
                                 />
                             ))
