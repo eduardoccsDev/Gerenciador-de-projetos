@@ -1,20 +1,22 @@
 import styles from "./ProjectCard.module.css"
-import { Link } from 'react-router-dom'
 import { BsPencil, BsFillTrashFill } from "react-icons/bs";
 import UINumber from "../layout/UINumber";
 import { motion } from "framer-motion";
-function Projetos({id, nomeProjeto, orcamento, category, cor , handleRemove}){
+function Projetos({id, nomeProjeto,orcamento, category, cor , handleEdit , handleRemove}){
 
     const remove = (e) =>{
         e.preventDefault()
         handleRemove(id)
     }
 
+    function edit(){
+        handleEdit()
+    }
+
     return(
 
             <motion.div 
             className={styles.projectCard} 
-            key={id}
             initial={{scale: 0}}
             animate={{scale:1}}
             exit={{scale:0}}
@@ -33,9 +35,9 @@ function Projetos({id, nomeProjeto, orcamento, category, cor , handleRemove}){
                     <span style={{backgroundColor:cor}}></span> {category}
                 </p>
                 <div className={styles.projectCardActions}>
-                    <Link to={`/projeto/${id}`}>
+                    <button className={styles.editBtn} onClick={edit}>
                         <BsPencil/> Editar
-                    </Link>
+                    </button>
                     <button onClick={remove}>
                         <BsFillTrashFill/> Excluir
                     </button>

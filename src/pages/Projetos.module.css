@@ -68,7 +68,8 @@
     left: 0;
     right: 0;
     margin: auto;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    z-index: 2;
 }
 .popupContainer{
     width: 1200px;
@@ -96,4 +97,12 @@
     height: auto;
     margin-bottom: -3px;
     margin-right: 5px;
+}
+.editTitle{
+    margin-bottom: 1em;
+    font-size: 32px;
+    text-align: center;
+}
+.center{
+    text-align: center;
 }

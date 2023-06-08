@@ -14,6 +14,7 @@ import Input from "../components/form/Input";
 import Select from "../components/form/Select";
 import SubmitButton from "../components/form/SubmitButton";
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import ReturnBtn from "../components/layout/ReturnBtn";
 
 function Projetos(){
 
@@ -162,6 +163,7 @@ function Projetos(){
                 >
                     <div className={styles.popupContainer}>
                         <div style={{textAlign:"right"}}><button className={styles.closeBtn} onClick={closeForm}><AiOutlineCloseCircle/>Fechar</button></div>
+                        <h2 className={styles.editTitle}>Editar Projeto</h2>
                         <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
                             <Input
                                 type='text'
@@ -224,11 +226,12 @@ function Projetos(){
                                         nomeProjeto={item.nome}
                                         orcamento={item.orcamento}
                                         category={item.name}
-                                        key={item.id}
+                                        key={i}
                                         handleRemove={handleDelete}
-                                        cor={item.cor} 
+                                        cor={item.cor}
+                                        handleEdit={() => handleEdit(item)}
                                     />
-                                    <button onClick={() => handleEdit(item)}>Editar</button>
+                                    {/* <button onClick={() => handleEdit(item)}>Editar</button> */}
                                 </>
                             ))
                         ) :
@@ -241,7 +244,9 @@ function Projetos(){
                                     orcamento={item.orcamento}
                                     category={item.name}
                                     key={i}
-                                    handleRemove={handleDelete} />
+                                    handleRemove={handleDelete}
+                                    handleEdit={() => handleEdit(item)} 
+                                />
                             ))
                         )}
                     {data.length === 0 ?
@@ -254,6 +259,11 @@ function Projetos(){
                         :
                         (<></>)}
                 </Container>
+                <div className={styles.center}>
+                <ReturnBtn
+                texto = "Voltar"
+                />
+                </div>
                 <ToastContainer autoClose={3000} position={toast.POSITION.TOP_RIGHT} />
             </motion.div></>
     )

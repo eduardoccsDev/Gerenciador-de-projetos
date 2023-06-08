@@ -10,6 +10,7 @@
 .projectCard:hover{
     border:solid 1px #00ffea;
     transform: scale(1.03);
+    cursor: pointer;
 }
 .projectCard h4{
     color: #eee;
@@ -20,6 +21,7 @@
 .projectCard p {
     color: #eee;
     margin-bottom: 1em;
+    text-align: initial;
 }
 .projectCard p span{
     font-weight: bold;
@@ -60,17 +62,17 @@
 .projectCardActions svg{
     margin-right: .5em;
 }
-.projectCardActions a{
+.projectCardActions .editBtn{
     background-color: #00dfcc;
 }
 .projectCardActions button{
-    background-color: #8767fa;
+    background-color: #fa6767;
 }
-.projectCardActions a:hover{
+.projectCardActions .editBtn:hover{
     background-color: #72ddd4;
 }
 .projectCardActions button:hover{
-    background-color: #a68eff;
+    background-color: #ff8e8e;
 }
 .orcamento{
     font-weight: 400;
