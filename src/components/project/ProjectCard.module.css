@@ -14,9 +14,9 @@
 }
 .projectCard h4{
     color: #eee;
-    padding: .4em;
-    margin-bottom: 1.3em;
-    font-size: 1.3em;
+    padding: .4em 0em;
+    margin-bottom: .3em;
+    font-size: 1.1em;
 }
 .projectCard p {
     color: #eee;
@@ -62,13 +62,13 @@
 .projectCardActions svg{
     margin-right: .5em;
 }
-.projectCardActions .editBtn{
-    background-color: #00dfcc;
+.projectCardActions .editBtn, .projectCard .servicoBtn{
+    background-color: #00ffea;
 }
 .projectCardActions button{
     background-color: #fa6767;
 }
-.projectCardActions .editBtn:hover{
+.projectCardActions .editBtn:hover, .projectCard .servicoBtn:hover{
     background-color: #72ddd4;
 }
 .projectCardActions button:hover{
@@ -84,4 +84,24 @@
 h4{
     display: flex;
     align-items: center;
+}
+.titleContainer{
+    display: flex;
+    justify-content: space-between;
+}
+.titleContainer button{
+    text-decoration: none;
+    border: none;
+    color: #1a1a1a;
+    font-size: 1em;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1em;
+    transition: 0.5s;
+    background-color: #fa6767;
+    height: 35px;
 }

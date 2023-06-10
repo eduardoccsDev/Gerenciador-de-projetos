@@ -74,7 +74,13 @@
 .popupContainer{
     width: 1200px;
     margin: auto;
-    padding-block: 5em;
+    padding: 5em 2em;
+    transform: translateY(-50%);
+    top: 38%;
+    position: relative;
+    background-color: #1a1a1a;
+    border-radius: 20px;
+    box-shadow: 12px 12px 4px -4px #000000a3;
 }
 .closeBtn{
     color: #333;
@@ -106,6 +112,6 @@
 .center{
     text-align: center;
 }
-#valorId{
-    
+.popup input, .popup select{
+    background-color: #1a1a1a !important;
 }

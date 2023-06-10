@@ -55,7 +55,7 @@ export const getCategorias = (_, res) => {
   };
 // ---------------------------------PROJETOS------------------------------------
   export const getProjetos = (_, res) => {
-    const q = "SELECT projetos.id, projetos.nome, projetos.orcamento, projetos.categoria, categorias.name , categorias.cor FROM projetos INNER JOIN categorias ON projetos.categoria = categorias.id";
+    const q = "SELECT projetos.id, projetos.nome, projetos.orcamento, projetos.categoria, categorias.name , categorias.cor FROM gdpdb.projetos INNER JOIN gdpdb.categorias ON projetos.categoria = categorias.id";
   
     db.query(q, (err, data) => {
       if (err) return res.json(err);
