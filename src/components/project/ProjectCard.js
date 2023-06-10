@@ -16,13 +16,14 @@ function Projetos({id, nomeProjeto,orcamento, category, cor , handleEdit , handl
     return(
 
             <motion.div 
+            id={id}
             className={styles.projectCard} 
             initial={{scale: 0}}
             animate={{scale:1}}
             exit={{scale:0}}
             transition={{ duration: 0.1 }}
             >
-                <h4 className={`${styles[category.toLowerCase()]}`}>
+                <h4>
                     {nomeProjeto}
                 </h4>
                 <p className={styles.orcamento}>

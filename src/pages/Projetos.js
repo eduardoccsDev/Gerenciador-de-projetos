@@ -20,7 +20,6 @@ function Projetos(){
 
     const ref = useRef();
     const [projetos, setProjetos] = useState([]);
-    // const location = useLocation();
     const excludeColumns = ['id'];
     const [search, setSearch] = useState("");
     const [data, setData] = useState(" ");
@@ -104,6 +103,7 @@ function Projetos(){
         if (onEdit) {
         const projeto = ref.current;
 
+        projeto.id.value = onEdit.id;
         projeto.nome.value = onEdit.nome;
         projeto.orcamento.value = onEdit.orcamento;
         projeto.categoria.value = onEdit.categoria;
@@ -116,6 +116,7 @@ function Projetos(){
         const projeto = ref.current;
 
         if (
+        !projeto.id.value ||    
         !projeto.nome.value ||
         !projeto.orcamento.value ||
         !projeto.categoria.value
@@ -126,6 +127,7 @@ function Projetos(){
         if (onEdit) {
         await axios
             .put("http://localhost:8800/projetos" + onEdit.id, {
+            id: projeto.id.value,    
             nome: projeto.nome.value,
             orcamento: projeto.orcamento.value,
             categoria: projeto.categoria.value,
@@ -135,6 +137,7 @@ function Projetos(){
         } else {
         await axios
             .post("http://localhost:8800/projetos", {
+                id: projeto.id.value,
                 nome: projeto.nome.value,
                 orcamento: projeto.orcamento.value,
                 categoria: projeto.categoria.value,
@@ -143,14 +146,17 @@ function Projetos(){
             .catch(({ data }) => toast.error(data));
         }
 
+        projeto.id.value = "";
         projeto.nome.value = "";
         projeto.orcamento.value = "";
         projeto.categoria.value = "";
 
-        setOnEdit(null);
+        // setOnEdit(null);
+        setIsActive(false);
         getProjetos();
-    };    
-    
+    };
+     
+
     return(
         <><>{isActive ?
             (
@@ -165,6 +171,7 @@ function Projetos(){
                         <div style={{textAlign:"right"}}><button className={styles.closeBtn} onClick={closeForm}><AiOutlineCloseCircle/>Fechar</button></div>
                         <h2 className={styles.editTitle}>Editar Projeto</h2>
                         <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
+                            <input id="ID" type="text" name="id" value={projeto.id} style={{display:"none"}}/>
                             <Input
                                 type='text'
                                 name='nome'

@@ -120,3 +120,58 @@ export const getCategorias = (_, res) => {
       return res.status(200).json("Projeto deletado com sucesso.");
     });
   };
+  // ---------------------------------SERVIÇOS------------------------------------
+    export const getServicos = (_, res) => {
+    const q = "SELECT projetos.id,projetos.nome, projetos.orcamento,servicos.nomeServico,servicos.cost,servicos.descricaoServico, servicos.projetoID FROM gdpdb.projetos INNER JOIN gdpdb.servicos ON projetos.id = servicos.projetoID";
+  
+    db.query(q, (err, data) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json(data);
+    });
+  };
+
+   export const addServicos = (req, res) => {
+    const q =
+      "INSERT INTO servicos (`nomeServico`, `cost`, `descricaoServico`, `projetoID` ) VALUES(?)";
+  
+    const values = [
+      req.body.nomeServico,
+      req.body.cost,
+      req.body.descricaoServico,
+      req.body.projetoID,
+    ];
+  
+    db.query(q, [values], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Serviço criado com sucesso.");
+    });
+  };
+  
+  export const updateServicos = (req, res) => {
+    const q =
+      "UPDATE servicos SET `nomeServico` = ?, `cost` = ? , `descricaoServico` = ?  WHERE `id` = ?";
+  
+    const values = [
+      req.body.nomeServico,
+      req.body.cost,
+      req.body.descricaoServico,
+    ];
+  
+    db.query(q, [...values, req.params.id], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Serviço atualizado com sucesso.");
+    });
+  };
+  
+  export const deleteServicos = (req, res) => {
+    const q = "DELETE FROM servicos WHERE `id` = ?";
+  
+    db.query(q, [req.params.id], (err) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json("Serviço deletado com sucesso.");
+    });
+  };
