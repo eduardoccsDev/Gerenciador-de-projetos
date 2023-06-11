@@ -55,7 +55,7 @@ export const getCategorias = (_, res) => {
   };
 // ---------------------------------PROJETOS------------------------------------
   export const getProjetos = (_, res) => {
-    const q = "SELECT projetos.id, projetos.nome, projetos.orcamento, projetos.categoria, categorias.name , categorias.cor FROM gdpdb.projetos INNER JOIN gdpdb.categorias ON projetos.categoria = categorias.id";
+    const q = "SELECT projetos.id, projetos.prioridade, prioridades.corPrioridade ,projetos.nome, projetos.orcamento, projetos.categoria, categorias.name , categorias.cor FROM gdpdb.projetos INNER JOIN gdpdb.categorias ON projetos.categoria = categorias.id INNER JOIN gdpdb.prioridades ON projetos.prioridade = prioridades.nomePrioridade";
   
     db.query(q, (err, data) => {
       if (err) return res.json(err);
@@ -79,12 +79,13 @@ export const getCategorias = (_, res) => {
 
    export const addProjetos = (req, res) => {
     const q =
-      "INSERT INTO projetos (`nome`, `orcamento`, `categoria`) VALUES(?)";
+      "INSERT INTO projetos (`nome`, `orcamento`, `categoria`, `prioridade`) VALUES(?)";
   
     const values = [
       req.body.nome,
       req.body.orcamento,
       req.body.categoria,
+      req.body.prioridade,
     ];
   
     db.query(q, [values], (err) => {
@@ -96,12 +97,13 @@ export const getCategorias = (_, res) => {
   
   export const updateProjetos = (req, res) => {
     const q =
-      "UPDATE projetos SET `nome` = ?, `orcamento` = ? , `categoria` = ? WHERE `id` = ?";
+      "UPDATE projetos SET `nome` = ?, `orcamento` = ? , `categoria` = ? , `prioridade` = ? WHERE `id` = ?";
   
     const values = [
       req.body.nome,
       req.body.orcamento,
       req.body.categoria,
+      req.body.prioridade,
     ];
   
     db.query(q, [...values, req.params.id], (err) => {
@@ -173,5 +175,15 @@ export const getCategorias = (_, res) => {
       if (err) return res.json(err);
   
       return res.status(200).json("Serviço deletado com sucesso.");
+    });
+  };
+  // ---------------------------------PRIORIDADES------------------------------------
+  export const getPrioridades = (_, res) => {
+    const q = "SELECT * FROM prioridades ORDER BY id ASC";
+  
+    db.query(q, (err, data) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json(data);
     });
   };

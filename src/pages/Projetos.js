@@ -15,6 +15,7 @@ import Select from "../components/form/Select";
 import SubmitButton from "../components/form/SubmitButton";
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import ReturnBtn from "../components/layout/ReturnBtn";
+import InputRadio from "../components/form/InputRadio"
 
 function Projetos(){
 
@@ -43,7 +44,29 @@ function Projetos(){
         }
     }
 
+    const [check, setCheck] = useState("");
+
+    const onOptionChange = e => {
+        setCheck(e.target.value)
+    }
+
+
     // axio
+
+     const [prioridades, setPrioridades] = useState([]);
+
+    const getPrioridades = async () => {
+        try {
+        const res = await axios.get("http://localhost:8800/prioridades");
+        setPrioridades(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+        } catch (error) {
+        toast.error(error);
+        }
+    };
+
+    useEffect(() => {
+        getPrioridades();
+    }, [setPrioridades]);
 
     const getProjetos = async () => {
         try {
@@ -107,6 +130,7 @@ function Projetos(){
         projeto.nome.value = onEdit.nome;
         projeto.orcamento.value = onEdit.orcamento;
         projeto.categoria.value = onEdit.categoria;
+        projeto.prioridades.value = onEdit.prioridade;
         }
     }, [onEdit]);
 
@@ -119,7 +143,8 @@ function Projetos(){
         !projeto.id.value ||    
         !projeto.nome.value ||
         !projeto.orcamento.value ||
-        !projeto.categoria.value
+        !projeto.categoria.value ||
+        !projeto.prioridades.value
         ) {
         return toast.warn("Preencha todos os campos!");
         }
@@ -131,6 +156,7 @@ function Projetos(){
             nome: projeto.nome.value,
             orcamento: projeto.orcamento.value,
             categoria: projeto.categoria.value,
+            prioridade: projeto.prioridades.value
             })
             .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data));
@@ -141,6 +167,7 @@ function Projetos(){
                 nome: projeto.nome.value,
                 orcamento: projeto.orcamento.value,
                 categoria: projeto.categoria.value,
+                prioridade: projeto.prioridades.value,
             })
             .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data));
@@ -150,6 +177,7 @@ function Projetos(){
         projeto.nome.value = "";
         projeto.orcamento.value = "";
         projeto.categoria.value = "";
+        projeto.prioridades.value ="";
 
         // setOnEdit(null);
         setIsActive(false);
@@ -191,6 +219,9 @@ function Projetos(){
                                 text='Categoria do projeto'
                                 options={categorias}
                                 value={valorSelecionado} />
+                            <InputRadio
+                                options={prioridades}
+                                handleOnChange={onOptionChange} />
                             <div>
                                 <SubmitButton
                                     text="Salvar" />
@@ -234,6 +265,8 @@ function Projetos(){
                                         orcamento={item.orcamento}
                                         category={item.name}
                                         key={i}
+                                        prioridade={item.prioridade}
+                                        corPrioridade={item.corPrioridade}
                                         handleRemove={handleDelete}
                                         cor={item.cor}
                                         handleEdit={() => handleEdit(item)}
@@ -251,6 +284,8 @@ function Projetos(){
                                     orcamento={item.orcamento}
                                     category={item.name}
                                     key={i}
+                                    prioridade={item.prioridade}
+                                    corPrioridade={item.corPrioridade}
                                     handleRemove={handleDelete}
                                     cor={item.cor}
                                     handleEdit={() => handleEdit(item)} 

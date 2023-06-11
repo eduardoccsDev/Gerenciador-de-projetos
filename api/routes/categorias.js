@@ -12,7 +12,8 @@ import {
     getServicos,
     addServicos,
     updateServicos,
-    deleteServicos
+    deleteServicos,
+    getPrioridades
 
 
 } from "../controllers/categorias.js";
@@ -22,7 +23,7 @@ const router = express.Router();
 router.get("/categorias", getCategorias);
 router.get("/projetos", getProjetos);
 router.get("/servicos", getServicos);
-// router.get("/prioridades", getPrioridades);
+router.get("/prioridades", getPrioridades);
 
 router.post("/categorias", addCategoria);
 router.post("/projetos", addProjetos);

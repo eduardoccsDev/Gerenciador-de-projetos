@@ -1,8 +1,9 @@
 import styles from "./ProjectCard.module.css"
 import { BsPencil, BsFillTrashFill } from "react-icons/bs";
+import { AiFillAlert } from "react-icons/ai"
 import UINumber from "../layout/UINumber";
 import { motion } from "framer-motion";
-function Projetos({id, nomeProjeto,orcamento, category, cor , handleEdit , handleRemove}){
+function Projetos({id, prioridade, corPrioridade ,nomeProjeto,orcamento, category, cor , handleEdit , handleRemove}){
 
     const remove = (e) =>{
         e.preventDefault()
@@ -26,6 +27,7 @@ function Projetos({id, nomeProjeto,orcamento, category, cor , handleEdit , handl
                 <h4>
                     {nomeProjeto}
                 </h4>
+                <p style={{color:corPrioridade}}><AiFillAlert/>{prioridade}</p>
                 <p className={styles.orcamento}>
                     <span>Orçamento: </span> R$ 
                     <UINumber format="0,0.00">
