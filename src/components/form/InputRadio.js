@@ -5,7 +5,7 @@ function InputRadio({options, handleOnChange}){
         <p className={styles.radioTitle}>Prioridade do projeto:</p>
         <div className={styles.radioContainer}>
             {options.map((option) => (
-                <div className={styles.radioOpts}>
+                <div key={option.id} className={styles.radioOpts}>
                     <input
                     id={option.nomePrioridade}
                     type="radio"
