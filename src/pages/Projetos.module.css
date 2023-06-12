@@ -74,7 +74,7 @@
 .popupContainer{
     width: 1200px;
     margin: auto;
-    padding: 5em 2em;
+    padding: 3em 2em;
     transform: translateY(-50%);
     top: 38%;
     position: relative;
@@ -92,6 +92,7 @@
     font-weight: 500;
     cursor: pointer;
     transition: 0.5s;
+    height: 40px;
 }
 .closeBtn:hover{
     background-color: #ff6e6e;
@@ -114,4 +115,12 @@
 }
 .popup input, .popup select{
     background-color: #1a1a1a !important;
+}
+.titlePopupContainer{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3em;
+}
+.btnSubmit{
+    margin-top: 3em;
 }

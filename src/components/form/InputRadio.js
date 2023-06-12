@@ -1,5 +1,5 @@
 import styles from "./InputRadio.module.css";
-function InputRadio({options, handleOnChange, check}){
+function InputRadio({options, handleOnChange}){
     return(
         <>
         <p className={styles.radioTitle}>Prioridade do projeto:</p>

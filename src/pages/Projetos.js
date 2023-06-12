@@ -196,8 +196,12 @@ function Projetos(){
                     className={styles.popup}
                 >
                     <div className={styles.popupContainer}>
-                        <div style={{textAlign:"right"}}><button className={styles.closeBtn} onClick={closeForm}><AiOutlineCloseCircle/>Fechar</button></div>
-                        <h2 className={styles.editTitle}>Editar Projeto</h2>
+                        <div className={styles.titlePopupContainer}>
+                            <h2 className={styles.editTitle}>Editar Projeto</h2>
+                            <button className={styles.closeBtn} onClick={closeForm}>
+                                <AiOutlineCloseCircle/>Fechar
+                            </button>
+                        </div>
                         <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
                             <input id="ID" type="text" name="id" value={projeto.id} style={{display:"none"}}/>
                             <Input
@@ -221,8 +225,9 @@ function Projetos(){
                                 value={valorSelecionado} />
                             <InputRadio
                                 options={prioridades}
-                                handleOnChange={onOptionChange} />
-                            <div>
+                                handleOnChange={onOptionChange}
+                             />
+                            <div className={styles.btnSubmit}>
                                 <SubmitButton
                                     text="Salvar" />
                             </div>
