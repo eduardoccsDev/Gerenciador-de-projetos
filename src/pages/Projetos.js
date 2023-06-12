@@ -16,6 +16,7 @@ import SubmitButton from "../components/form/SubmitButton";
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import ReturnBtn from "../components/layout/ReturnBtn";
 import InputRadio from "../components/form/InputRadio"
+import GridServicos from "../components/project/GridServicos";
 
 function Projetos(){
 
@@ -25,6 +26,7 @@ function Projetos(){
     const [search, setSearch] = useState("");
     const [data, setData] = useState(" ");
     const [isActive, setIsActive] = useState(false);
+    const [isActiveServico, setIsActiveServico] = useState(false);
     const handleChange = value => {
         setSearch(value);
         filterData(value);
@@ -115,11 +117,16 @@ function Projetos(){
     const [onEdit, setOnEdit] = useState(null);    
     const handleEdit = (item) => {
     setOnEdit(item);
-    // setIsActive(current => !current);
     setIsActive(true);
+    };
+    const handleEditServico = (item) => {
+    setOnEdit(item);
+    setIsActiveServico(true);
     };
     function closeForm(){
         setIsActive(false);
+        setIsActiveServico(false);
+        setOnEdit("");
     }
 
       useEffect(() => {
@@ -183,9 +190,28 @@ function Projetos(){
         setIsActive(false);
         getProjetos();
     };
+
+    const [servicos, setServicos] = useState([]);
+  
+
+
+  const getServicos = async () => {
+    try {
+      const res = await axios.get("http://localhost:8800/servicos");
+      setServicos(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getServicos();
+  }, [setServicos]);
+
      
 
     return(
+        //editar servico
         <><>{isActive ?
             (
                 <motion.div
@@ -237,6 +263,13 @@ function Projetos(){
             )
             :
             (<></>)}</>
+            {/* editar/add servico */}
+            {isActiveServico ? 
+            (
+                <></>
+            )
+            :
+            (<></>)}
             <motion.div
                 className={styles.projectContainer}
                 key='projetos'
@@ -275,6 +308,7 @@ function Projetos(){
                                         handleRemove={handleDelete}
                                         cor={item.cor}
                                         handleEdit={() => handleEdit(item)}
+                                        handleEditServico={() => handleEditServico(item)}
                                     />
                                     {/* <button onClick={() => handleEdit(item)}>Editar</button> */}
                                 </>
@@ -294,6 +328,7 @@ function Projetos(){
                                     handleRemove={handleDelete}
                                     cor={item.cor}
                                     handleEdit={() => handleEdit(item)} 
+                                    handleEditServico={() => handleEditServico(item)}
                                 />
                             ))
                         )}

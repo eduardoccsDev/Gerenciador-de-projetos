@@ -3,7 +3,7 @@ import { BsPencil, BsFillTrashFill, BsListTask } from "react-icons/bs";
 import { AiFillAlert } from "react-icons/ai"
 import UINumber from "../layout/UINumber";
 import { motion } from "framer-motion";
-function Projetos({id, prioridade, corPrioridade ,nomeProjeto,orcamento, category, cor , handleEdit , handleRemove}){
+function Projetos({id, prioridade, handleEditServico, corPrioridade ,nomeProjeto,orcamento, category, cor , handleEdit , handleRemove}){
 
     const remove = (e) =>{
         e.preventDefault()
@@ -12,6 +12,10 @@ function Projetos({id, prioridade, corPrioridade ,nomeProjeto,orcamento, categor
 
     function edit(){
         handleEdit()
+    }
+
+    function editServico(){
+        handleEditServico()
     }
 
     return(
@@ -46,8 +50,11 @@ function Projetos({id, prioridade, corPrioridade ,nomeProjeto,orcamento, categor
                     <button className={styles.editBtn} onClick={edit}>
                         <BsPencil/> Editar
                     </button>
-                    <button className={styles.servicoBtn}>
+                    <button className={styles.servicoBtn} onClick={editServico}>
                         <BsListTask/> Serviços
+                        <div className={styles.containerServico}>
+                            <span className={styles.qdtServicos}>10</span>
+                        </div>
                     </button>
                 </div>
             </motion.div>
