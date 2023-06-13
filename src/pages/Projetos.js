@@ -18,12 +18,10 @@ function Projetos(){
 
     const ref = useRef();
     const [projetos, setProjetos] = useState([]);
-    const [projetosServico, setProjetosServico] = useState([]);
     const excludeColumns = ['id'];
     const [search, setSearch] = useState("");
     const [data, setData] = useState(" ");
     const [isActive, setIsActive] = useState(false);
-    const [isActiveServico, setIsActiveServico] = useState(false);
     const handleChange = value => {
         setSearch(value);
         filterData(value);
@@ -80,20 +78,6 @@ function Projetos(){
         getProjetos();
     }, [setProjetos]);
 
-    const getProjetosServico = async () => {
-        try {
-        const res = await axios.get("http://localhost:8800/projetosServico");
-        setProjetosServico(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
-        } catch (error) {
-        toast.error(error);
-        }
-    };
-
-    useEffect(() => {
-        getProjetosServico();
-    }, [setProjetosServico]);
-
-    
       const handleDelete = async (id) => {
         await axios
           .delete("http://localhost:8800/projetos" + id)
@@ -129,9 +113,9 @@ function Projetos(){
     setOnEdit(item);
     setIsActive(true);
     };
+
     function closeForm(){
         setIsActive(false);
-        setIsActiveServico(false);
         setOnEdit("");
     }
 
@@ -144,6 +128,7 @@ function Projetos(){
         projeto.orcamento.value = onEdit.orcamento;
         projeto.categoria.value = onEdit.categoria;
         projeto.prioridades.value = onEdit.prioridade;
+        projeto.descricaoProjeto.value = onEdit.descricaoProjeto;
         }
     }, [onEdit]);
 
@@ -169,7 +154,8 @@ function Projetos(){
             nome: projeto.nome.value,
             orcamento: projeto.orcamento.value,
             categoria: projeto.categoria.value,
-            prioridade: projeto.prioridades.value
+            prioridade: projeto.prioridades.value,
+            descricaoProjeto: projeto.descricaoProjeto.value,
             })
             .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data));
@@ -181,6 +167,7 @@ function Projetos(){
                 orcamento: projeto.orcamento.value,
                 categoria: projeto.categoria.value,
                 prioridade: projeto.prioridades.value,
+                descricaoProjeto: projeto.descricaoProjeto.value,
             })
             .then(({ data }) => toast.success(data))
             .catch(({ data }) => toast.error(data));
@@ -191,32 +178,13 @@ function Projetos(){
         projeto.orcamento.value = "";
         projeto.categoria.value = "";
         projeto.prioridades.value ="";
+        projeto.descricaoProjeto.value="";
 
         // setOnEdit(null);
         setIsActive(false);
         getProjetos();
     };
-
-    const [servicos, setServicos] = useState([]);
-  
-
-
-  const getServicos = async () => {
-    try {
-      const res = await axios.get("http://localhost:8800/servicos");
-      setServicos(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
-    } catch (error) {
-      toast.error(error);
-    }
-  };
-
-  useEffect(() => {
-    getServicos();
-  }, [setServicos]);
-
-  
-
-     
+   
 
     return(
         //editar servico
@@ -246,6 +214,7 @@ function Projetos(){
                             handleOnChangeRadio={onOptionChange}
                             handleOnChange={(e) => setValorSelecionado(e.target.value)}
                             referencia={ref}
+                            descricao={projeto.descricaoProjeto}
                             handleSubmit={handleSubmit}
                             />
                     </div>
@@ -253,7 +222,6 @@ function Projetos(){
             )
             :
             (<></>)}
-            {/* editar/add servico */}
             <motion.div
                 className={styles.projectContainer}
                 key='projetos'

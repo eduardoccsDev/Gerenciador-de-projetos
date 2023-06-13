@@ -1,11 +1,11 @@
-import { useState } from "react";
 import Input from "../form/Input";
 import Select from "../form/Select";
 import InputRadio from "../form/InputRadio";
 import SubmitButton from "../form/SubmitButton";
 import styles from "./FormEdit.module.css"
+import TextArea from "../form/textArea";
 
-function FormEdit({nome, id,orcamento, categorias, valorSelected, prioridades, referencia, handleSubmit, handleOnChangeRadio, handleOnChange}){
+function FormEdit({nome, id,orcamento, descricao,categorias, valorSelected, prioridades, referencia, handleSubmit, handleOnChangeRadio, handleOnChange}){
     
 
     return(
@@ -14,13 +14,13 @@ function FormEdit({nome, id,orcamento, categorias, valorSelected, prioridades, r
             <Input
                 type='text'
                 name='nome'
-                text='Nome do projeto'
+                text='Nome do projeto:'
                 placeholder='Insira o nome do projeto'
                 value={nome} />
             <Input
                 type='number'
                 name='orcamento'
-                text='Orçamento do projeto'
+                text='Orçamento do projeto:'
                 placeholder='Insira o orçamento total'
                 min='0'
                 value={orcamento} />
@@ -34,6 +34,12 @@ function FormEdit({nome, id,orcamento, categorias, valorSelected, prioridades, r
                 options={prioridades}
                 handleOnChange={handleOnChangeRadio}
                 />
+            <TextArea
+                nome="descricaoProjeto"
+                placeholder="Adicione a descrição do projeto"
+                text="Descrição do projeto:"
+                value={descricao}
+            />    
             <div className={styles.btnSubmit}>
                 <SubmitButton
                     text="Salvar" />

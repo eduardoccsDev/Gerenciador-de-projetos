@@ -5,7 +5,6 @@ import Contato from '../pages/Contato';
 import Projetos from "../pages/Projetos";
 import NovoProjeto from "../pages/NovoProjeto";
 import Container from "../components/layout/Container";
-import Projeto from '../pages/projeto';
 
 import { AnimatePresence } from 'framer-motion';
 
@@ -20,7 +19,6 @@ function AnimatedRoutes(){
                     <Route path='/projetos' element={<Projetos />}/>
                     <Route path='/contato' element={<Contato />}/>
                     <Route path='/novoprojeto' element={<NovoProjeto />}/>
-                    <Route path='/projeto/:id' element={<Projeto />}/>
                 </Routes>
             </Container>
         </AnimatePresence>

@@ -1,0 +1,21 @@
+.textareaContainer label{
+    font-size: 16px;
+    font-weight: 600;
+    color: #eee;
+}
+.textarea{
+    width: 100%;
+    min-height: 13em;
+    max-height: 13em;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    background-color: #1a1a1a;
+    color: #eee;
+    border: solid 2px #ffffff1a;
+    border-radius: 10px;
+    padding: .5em;
+}
+.textarea:focus{
+    outline: none;
+    border: 1px solid #00ffea;
+}
