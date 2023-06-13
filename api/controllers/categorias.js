@@ -64,6 +64,16 @@ export const getCategorias = (_, res) => {
     });
   };
 
+    export const getProjetosServico = (_, res) => {
+    const q = "SELECT projetos.id,projetos.nome, projetos.orcamento,servicos.projetoID,servicos.nomeServico,servicos.descricaoServico,servicos.cost FROM gdpdb.projetos INNER JOIN gdpdb.servicos ON projetos.id = servicos.projetoID";
+  
+    db.query(q, (err, data) => {
+      if (err) return res.json(err);
+  
+      return res.status(200).json(data);
+    });
+  };
+
   export const getProjetosUnico = (req, res) => {
     const q = "SELECT projetos.id, projetos.nome, projetos.orcamento, projetos.categoria, categorias.name , categorias.cor FROM projetos INNER JOIN categorias ON projetos.categoria = categorias.id WHERE `projetos.id` = ?";
     const values = [

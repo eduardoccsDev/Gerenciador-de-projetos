@@ -14,9 +14,6 @@ function Projetos({id, prioridade, handleEditServico, corPrioridade ,nomeProjeto
         handleEdit()
     }
 
-    function editServico(){
-        handleEditServico()
-    }
 
     return(
 
@@ -50,10 +47,10 @@ function Projetos({id, prioridade, handleEditServico, corPrioridade ,nomeProjeto
                     <button className={styles.editBtn} onClick={edit}>
                         <BsPencil/> Editar
                     </button>
-                    <button className={styles.servicoBtn} onClick={editServico}>
+                    <button className={styles.servicoBtn}>
                         <BsListTask/> Serviços
                         <div className={styles.containerServico}>
-                            <span className={styles.qdtServicos}>10</span>
+                            <span className={styles.qdtServicos}>{"0"}</span>
                         </div>
                     </button>
                 </div>

@@ -10,18 +10,15 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import 'reactjs-popup/dist/index.css';
-import Input from "../components/form/Input";
-import Select from "../components/form/Select";
-import SubmitButton from "../components/form/SubmitButton";
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import ReturnBtn from "../components/layout/ReturnBtn";
-import InputRadio from "../components/form/InputRadio"
-import GridServicos from "../components/project/GridServicos";
+import FormEdit from "../components/project/FormEdit"
 
 function Projetos(){
 
     const ref = useRef();
     const [projetos, setProjetos] = useState([]);
+    const [projetosServico, setProjetosServico] = useState([]);
     const excludeColumns = ['id'];
     const [search, setSearch] = useState("");
     const [data, setData] = useState(" ");
@@ -83,6 +80,19 @@ function Projetos(){
         getProjetos();
     }, [setProjetos]);
 
+    const getProjetosServico = async () => {
+        try {
+        const res = await axios.get("http://localhost:8800/projetosServico");
+        setProjetosServico(res.data.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+        } catch (error) {
+        toast.error(error);
+        }
+    };
+
+    useEffect(() => {
+        getProjetosServico();
+    }, [setProjetosServico]);
+
     
       const handleDelete = async (id) => {
         await axios
@@ -118,10 +128,6 @@ function Projetos(){
     const handleEdit = (item) => {
     setOnEdit(item);
     setIsActive(true);
-    };
-    const handleEditServico = (item) => {
-    setOnEdit(item);
-    setIsActiveServico(true);
     };
     function closeForm(){
         setIsActive(false);
@@ -208,11 +214,13 @@ function Projetos(){
     getServicos();
   }, [setServicos]);
 
+  
+
      
 
     return(
         //editar servico
-        <><>{isActive ?
+        <>{isActive ?
             (
                 <motion.div
                     initial={{ opacity: 0 }}
@@ -228,48 +236,24 @@ function Projetos(){
                                 <AiOutlineCloseCircle/>Fechar
                             </button>
                         </div>
-                        <form ref={ref} className={styles.form} onSubmit={handleSubmit}>
-                            <input id="ID" type="text" name="id" value={projeto.id} style={{display:"none"}}/>
-                            <Input
-                                type='text'
-                                name='nome'
-                                text='Nome do projeto'
-                                placeholder='Insira o nome do projeto'
-                                value={projeto.nome} />
-                            <Input
-                                type='number'
-                                name='orcamento'
-                                text='Orçamento do projeto'
-                                placeholder='Insira o orçamento total'
-                                min='0'
-                                value={projeto.orcamento} />
-                            <Select
-                                name='categoria'
-                                handleOnChange={(e) => setValorSelecionado(e.target.value)}
-                                text='Categoria do projeto'
-                                options={categorias}
-                                value={valorSelecionado} />
-                            <InputRadio
-                                options={prioridades}
-                                handleOnChange={onOptionChange}
-                             />
-                            <div className={styles.btnSubmit}>
-                                <SubmitButton
-                                    text="Salvar" />
-                            </div>
-                        </form>
+                            <FormEdit
+                            id={projeto.id}
+                            nome={projeto.nome}
+                            orcamento={projeto.orcamento}
+                            categorias={categorias}
+                            valorSelected={valorSelecionado}
+                            prioridades={prioridades}
+                            handleOnChangeRadio={onOptionChange}
+                            handleOnChange={(e) => setValorSelecionado(e.target.value)}
+                            referencia={ref}
+                            handleSubmit={handleSubmit}
+                            />
                     </div>
                 </motion.div>
             )
             :
-            (<></>)}</>
-            {/* editar/add servico */}
-            {isActiveServico ? 
-            (
-                <></>
-            )
-            :
             (<></>)}
+            {/* editar/add servico */}
             <motion.div
                 className={styles.projectContainer}
                 key='projetos'
@@ -308,7 +292,6 @@ function Projetos(){
                                         handleRemove={handleDelete}
                                         cor={item.cor}
                                         handleEdit={() => handleEdit(item)}
-                                        handleEditServico={() => handleEditServico(item)}
                                     />
                                     {/* <button onClick={() => handleEdit(item)}>Editar</button> */}
                                 </>
@@ -328,7 +311,6 @@ function Projetos(){
                                     handleRemove={handleDelete}
                                     cor={item.cor}
                                     handleEdit={() => handleEdit(item)} 
-                                    handleEditServico={() => handleEditServico(item)}
                                 />
                             ))
                         )}
