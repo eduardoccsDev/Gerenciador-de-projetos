@@ -261,7 +261,6 @@ function Projetos(){
                                         cor={item.cor}
                                         handleEdit={() => handleEdit(item)}
                                     />
-                                    {/* <button onClick={() => handleEdit(item)}>Editar</button> */}
                                 </>
                             ))
                         ) :

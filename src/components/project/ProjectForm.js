@@ -7,13 +7,12 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InputRadio from "../form/InputRadio";
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate   } from 'react-router-dom';
 
 function ProjectForm({btnText}){
 
-    // const history = useNavigate()
     const projeto = {}
-
+    const history = useNavigate();
 
     const [check, setCheck] = useState("");
 
@@ -84,7 +83,9 @@ function ProjectForm({btnText}){
             })
             .then(({ data }) => {
                 toast.success(data)
-                // history('/projetos')
+                setTimeout(()=>{
+                    history('/projetos')
+                }, 3000)
             })
             .catch(({ data }) => toast.error(data));
 
@@ -96,8 +97,6 @@ function ProjectForm({btnText}){
 
     };
 
-
-  
     return(
         <>
         <form ref={ref} className={styles.form} onSubmit={handleSubmitProjetos}>
