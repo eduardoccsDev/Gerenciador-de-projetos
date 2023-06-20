@@ -1,24 +1,25 @@
-import Container from "../components/layout/Container"
-import LinkButton from "../components/layout/LinkButton"
-import styles from "./Projetos.module.css"
-import ProjectCard from "../components/project/ProjectCard"
-import { useState, useEffect, useRef } from "react"
-import React from 'react';
-import {BiSearch} from 'react-icons/bi'
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
+import { BiSearch } from 'react-icons/bi';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
 import 'reactjs-popup/dist/index.css';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
+
+import Container from "../components/layout/Container";
+import LinkButton from "../components/layout/LinkButton";
 import ReturnBtn from "../components/layout/ReturnBtn";
-import FormEdit from "../components/project/FormEdit"
+import FormEdit from "../components/project/FormEdit";
+import ProjectCard from "../components/project/ProjectCard";
+import styles from "./Projetos.module.css";
+
 
 function Projetos(){
 
     const ref = useRef();
     const [projetos, setProjetos] = useState([]);
-    const excludeColumns = ['id'];
+    const excludeColumns = ['id, descricaoProjeto'];
     const [search, setSearch] = useState("");
     const [data, setData] = useState(" ");
     const [isActive, setIsActive] = useState(false);
@@ -50,7 +51,7 @@ function Projetos(){
 
     // axio
 
-     const [prioridades, setPrioridades] = useState([]);
+    const [prioridades, setPrioridades] = useState([]);
 
     const getPrioridades = async () => {
         try {
@@ -248,7 +249,6 @@ function Projetos(){
                         (
                             projetos.length > 0 &&
                             projetos.map((item, i) => (
-                                <>
                                     <ProjectCard
                                         id={item.id}
                                         nomeProjeto={item.nome}
@@ -261,7 +261,6 @@ function Projetos(){
                                         cor={item.cor}
                                         handleEdit={() => handleEdit(item)}
                                     />
-                                </>
                             ))
                         ) :
                         (

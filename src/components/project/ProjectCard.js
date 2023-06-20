@@ -1,5 +1,5 @@
 import styles from "./ProjectCard.module.css"
-import { BsPencil, BsFillTrashFill, BsListTask } from "react-icons/bs";
+import { BsPencil, BsFillTrashFill} from "react-icons/bs";
 import { AiFillAlert } from "react-icons/ai"
 import UINumber from "../layout/UINumber";
 import { motion } from "framer-motion";
@@ -46,12 +46,6 @@ function Projetos({id, prioridade, corPrioridade ,nomeProjeto,orcamento, categor
                     <button className={styles.editBtn} onClick={edit}>
                         <BsPencil/> Editar
                     </button>
-                    {/* <button className={styles.servicoBtn}>
-                        <BsListTask/> Serviços
-                        <div className={styles.containerServico}>
-                            <span className={styles.qdtServicos}>{"0"}</span>
-                        </div>
-                    </button> */}
                 </div>
             </motion.div>
 
