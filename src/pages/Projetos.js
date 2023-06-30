@@ -226,7 +226,7 @@ function Projetos(){
             <motion.div
                 className={styles.projectContainer}
                 key='projetos'
-                initial={{ opacity: 0 }}
+                initial={{ opacity: 0, width:'100%' }}
                 animate={{ opacity: 1 , width:'100%'}}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}
