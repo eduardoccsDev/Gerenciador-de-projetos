@@ -46,6 +46,7 @@ function Projetos(){
 
     const onOptionChange = e => {
         setCheck(e.target.value)
+        console.log(check)
     }
 
 
