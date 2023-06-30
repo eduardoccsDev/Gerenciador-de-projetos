@@ -227,7 +227,7 @@ function Projetos(){
                 className={styles.projectContainer}
                 key='projetos'
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                animate={{ opacity: 1 , width:'100%'}}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}
             >
